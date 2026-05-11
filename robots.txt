@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# REMPLACER : votre-domaine.fr par votre vrai domaine
+Sitemap: https://votre-domaine.fr/sitemap.xml

@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Service de detailing automobile premium à domicile en Île-de-France. Lavage intérieur haut de gamme, finitions millimétrées, produits professionnels. Formules dès 49 €. Réservez en ligne." />
+  <title>NOM_ENTREPRISE — Detailing automobile premium · Île-de-France</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NOM_ENTREPRISE — Detailing automobile premium" />
+  <meta property="og:description" content="Lavage intérieur haut de gamme à domicile en Île-de-France. Formules dès 49 €. Résultat garanti." />
+  <meta property="og:image" content="assets/images/hero-bg.jpg" />
+  <!-- REMPLACER : votre-domaine.fr -->
+  <meta property="og:url" content="https://votre-domaine.fr" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="NOM_ENTREPRISE" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NOM_ENTREPRISE — Detailing automobile premium" />
+  <meta name="twitter:description" content="Lavage intérieur haut de gamme à domicile en Île-de-France." />
+  <meta name="twitter:image" content="assets/images/hero-bg.jpg" />
+
+  <!-- Canonical — REMPLACER : votre-domaine.fr -->
+  <link rel="canonical" href="https://votre-domaine.fr" />
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoWash",
+    "name": "NOM_ENTREPRISE",
+    "description": "Service de detailing automobile premium à domicile en Île-de-France.",
+    "url": "https://votre-domaine.fr",
+    "telephone": "+33-0-00-00-00-00",
+    "email": "contact@exemple.fr",
+    "priceRange": "€€",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Île-de-France",
+      "addressCountry": "FR"
+    },
+    "areaServed": {
+      "@type": "State",
+      "name": "Île-de-France"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "08:00",
+        "closes": "19:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Saturday",
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "bestRating": "5",
+      "reviewCount": "487"
+    }
+  }
+  </script>
+
+  <!-- Preconnect Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo" aria-label="NOM_ENTREPRISE — Accueil">
+        <img src="assets/images/logo.svg" alt="NOM_ENTREPRISE" width="36" height="36" />
+        <span>NOM_ENTREPRISE</span>
+      </a>
+
+      <nav class="header__nav" aria-label="Navigation principale">
+        <a href="#services">Prestations</a>
+        <a href="#before-after">Avant / Après</a>
+        <a href="#reviews">Avis</a>
+        <a href="#loyalty">Fidélité</a>
+      </nav>
+
+      <a href="#booking" class="btn btn--accent header__cta">Réserver</a>
+
+      <button class="header__burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="header__mobile" id="mobileMenu">
+      <a href="#services">Prestations</a>
+      <a href="#before-after">Avant / Après</a>
+      <a href="#reviews">Avis</a>
+      <a href="#about">À propos</a>
+      <a href="#loyalty">Fidélité</a>
+      <a href="#faq">FAQ</a>
+      <a href="#zone">Zone d'intervention</a>
+      <a href="#booking" class="btn btn--accent">Réserver maintenant</a>
+    </div>
+  </header>
+
+  <!-- WhatsApp flottant — REMPLACER : numéro WhatsApp (format international sans +) -->
+  <a href="https://wa.me/33600000000" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="Nous contacter sur WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- Floating CTA mobile (réservation) -->
+  <a href="#booking" class="floating-cta" aria-label="Réserver">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    Réserver
+  </a>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__glow hero__glow--1"></div>
+        <div class="hero__glow hero__glow--2"></div>
+        <div class="hero__grid"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <div class="hero__badge animate-on-scroll">
+          <span class="hero__badge-dot"></span>
+          Detailing premium · Service mobile
+        </div>
+
+        <h1 class="hero__title animate-on-scroll">
+          L'intérieur de votre véhicule,<br />
+          <span class="text-accent">comme neuf.</span>
+        </h1>
+
+        <p class="hero__subtitle animate-on-scroll">
+          Lavage intérieur haut de gamme, finitions millimétrées, produits professionnels.
+          Votre voiture mérite l'excellence.
+        </p>
+
+        <div class="hero__cta animate-on-scroll">
+          <a href="#booking" class="btn btn--accent btn--lg">Réserver maintenant</a>
+          <a href="#services" class="btn btn--ghost btn--lg">Voir les formules</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="section-head animate-on-scroll">
+          <span class="section-eyebrow">Nos prestations</span>
+          <h2 class="section-title">Choisissez votre <span class="text-accent">formule</span></h2>
+        </div>
+
+        <div class="services__grid">
+          <article class="service-card tilt animate-on-scroll" data-tilt>
+            <div class="service-card__header">
+              <span class="service-card__tag">Essentiel</span>
+              <div class="service-card__price">
+                <span class="price">49<span>€</span></span>
+                <span class="duration">1h</span>
+              </div>
+            </div>
+            <p class="service-card__desc">Le coup de frais idéal pour entretenir régulièrement votre habitacle.</p>
+            <ul class="service-card__features">
+              <li>Aspiration complète</li>
+              <li>Dépoussiérage tableau de bord</li>
+              <li>Nettoyage vitres intérieures</li>
+              <li>Désodorisant premium</li>
+            </ul>
+            <a href="#booking" class="btn btn--outline btn--block">Réserver l'Essentiel</a>
+          </article>
+
+          <article class="service-card service-card--featured tilt animate-on-scroll" data-tilt>
+            <div class="service-card__badge">Le plus choisi</div>
+            <div class="service-card__header">
+              <span class="service-card__tag">Premium</span>
+              <div class="service-card__price">
+                <span class="price">89<span>€</span></span>
+                <span class="duration">2h</span>
+              </div>
+            </div>
+            <p class="service-card__desc">L'équilibre parfait entre soin du détail et profondeur de nettoyage.</p>
+            <ul class="service-card__features">
+              <li>Tout l'Essentiel</li>
+              <li>Shampoing sièges tissu</li>
+              <li>Nettoyage plastiques + rénovation</li>
+              <li>Traitement tapis &amp; moquettes</li>
+              <li>Finition cuir nourrissant</li>
+            </ul>
+            <a href="#booking" class="btn btn--accent btn--block">Réserver le Premium</a>
+          </article>
+
+          <article class="service-card tilt animate-on-scroll" data-tilt>
+            <div class="service-card__header">
+              <span class="service-card__tag">Complet</span>
+              <div class="service-card__price">
+                <span class="price">139<span>€</span></span>
+                <span class="duration">3h30</span>
+              </div>
+            </div>
+            <p class="service-card__desc">L'intégrale : votre véhicule retrouve son éclat d'origine.</p>
+            <ul class="service-card__features">
+              <li>Tout le Premium</li>
+              <li>Décontamination textile profonde</li>
+              <li>Traitement anti-bactérien ozone</li>
+              <li>Polissage plastiques &amp; cuirs</li>
+              <li>Protection longue durée</li>
+            </ul>
+            <a href="#booking" class="btn btn--outline btn--block">Réserver le Complet</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BEFORE / AFTER ============ -->
+    <section class="ba" id="before-after">
+      <div class="container">
+        <div class="section-head animate-on-scroll">
+          <span class="section-eyebrow">Le résultat parle</span>
+          <h2 class="section-title">Avant <span class="text-accent">/</span> Après</h2>
+        </div>
+
+        <div class="ba__slider animate-on-scroll" id="baSlider">
+          <!-- REMPLACER : assets/images/before-after/before-1.jpg + after-1.jpg -->
+          <img src="assets/images/before-after/after-1.jpg" alt="Intérieur véhicule après detailing" class="ba__img ba__img--after" width="1000" height="563" loading="lazy" />
+          <div class="ba__before-wrap">
+            <img src="assets/images/before-after/before-1.jpg" alt="Intérieur véhicule avant detailing" class="ba__img ba__img--before" width="1000" height="563" loading="lazy" />
+          </div>
+          <div class="ba__handle" id="baHandle">
+            <div class="ba__handle-line"></div>
+            <div class="ba__handle-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+          <span class="ba__label ba__label--before">Avant</span>
+          <span class="ba__label ba__label--after">Après</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head animate-on-scroll">
+          <span class="section-eyebrow">Nos réalisations</span>
+          <h2 class="section-title">Le résultat en <span class="text-accent">images</span></h2>
+        </div>
+
+        <div class="gallery__grid">
+          <div class="gallery__card animate-on-scroll">
+            <img src="assets/images/before-after/after-1.jpg" alt="Sièges tissu après detailing" loading="lazy" width="400" height="300" />
+            <span class="gallery__label gallery__label--accent">Sièges tissu</span>
+          </div>
+
+          <div class="gallery__card animate-on-scroll">
+            <img src="assets/images/before-after/before-1.jpg" alt="État avant detailing" loading="lazy" width="400" height="300" />
+            <span class="gallery__label">Avant intervention</span>
+          </div>
+
+          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
+            <div class="gallery__placeholder-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="gallery__placeholder-label">Tapis &amp; Moquettes</span>
+            <span class="gallery__placeholder-sub">Photo à venir</span>
+          </div>
+
+          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
+            <div class="gallery__placeholder-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="gallery__placeholder-label">Tableau de bord</span>
+            <span class="gallery__placeholder-sub">Photo à venir</span>
+          </div>
+
+          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
+            <div class="gallery__placeholder-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="gallery__placeholder-label">Cuirs &amp; Plastiques</span>
+            <span class="gallery__placeholder-sub">Photo à venir</span>
+          </div>
+
+          <!-- REMPLACER : URL Instagram -->
+          <a href="#" target="_blank" rel="noopener" class="gallery__card gallery__card--insta animate-on-scroll" aria-label="Voir notre portfolio sur Instagram">
+            <div class="gallery__insta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+            </div>
+            <span class="gallery__insta-text">Voir toutes<br>nos réalisations</span>
+            <span class="gallery__insta-sub">@nom_instagram</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="section-head animate-on-scroll">
+          <span class="section-eyebrow">Avis vérifiés Google</span>
+          <h2 class="section-title">Ils nous ont fait <span class="text-accent">confiance</span></h2>
+        </div>
+
+        <div class="reviews__rating animate-on-scroll">
+          <div class="reviews__score">
+            <div class="reviews__score-number">4.9</div>
+            <div class="reviews__stars" aria-label="4.9 étoiles sur 5">
+              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+            </div>
+            <div class="reviews__score-text">Basé sur <strong>487 avis Google</strong></div>
+          </div>
+          <!-- REMPLACER : LIEN_GOOGLE -->
+          <a href="LIEN_GOOGLE" target="_blank" rel="noopener" class="btn btn--outline">
+            Voir tous les avis
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+
+        <div class="reviews__grid">
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Travail irréprochable. Ma voiture est comme neuve, jusque dans les moindres recoins. Je recommande à 100%."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(59,130,246,0.18)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#3B82F6">TL</text></svg>
+              <div><strong>Thomas L.</strong><span>Il y a 2 semaines</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Service ultra pro, ponctuel et soigné. Le résultat dépasse mes attentes. Je reviendrai sans hésiter."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(99,179,237,0.18)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#63B3ED">SM</text></svg>
+              <div><strong>Sarah M.</strong><span>Il y a 1 mois</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Un travail d'orfèvre. Les taches que je pensais incrustées ont disparu. Rapport qualité/prix imbattable."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(74,222,128,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#4ade80">KB</text></svg>
+              <div><strong>Karim B.</strong><span>Il y a 3 semaines</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"J'avais des taches de café sur les sièges depuis des mois. Tout a disparu. Résultat bluffant, je n'aurais pas cru c'était possible."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(248,113,113,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#F87171">MR</text></svg>
+              <div><strong>Marie R.</strong><span>Il y a 5 jours</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Ponctuel, soigneux et vraiment passionné par son métier. On sent la différence avec les laveries classiques. Ma BMW n'a jamais été aussi propre."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(167,139,250,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#A78BFA">LP</text></svg>
+              <div><strong>Lucas P.</strong><span>Il y a 2 semaines</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Formule Complet prise pour mon van après un road trip. C'est propre, ça sent bon, et chaque recoin a été traité. Je recommande les yeux fermés."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(251,191,36,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#FBBF24">AD</text></svg>
+              <div><strong>Amélie D.</strong><span>Il y a 3 jours</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="reviews__banner animate-on-scroll">
+          <div class="reviews__banner-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="reviews__banner-content">
+            <strong>Laissez un avis Google après votre prestation</strong>
+            <span>= <span class="text-accent">5 €</span> de remise sur votre prochaine réservation</span>
+          </div>
+          <!-- REMPLACER : LIEN_GOOGLE -->
+          <a href="LIEN_GOOGLE" target="_blank" rel="noopener" class="btn btn--accent">Laisser un avis</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ À PROPOS ============ -->
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-head animate-on-scroll">
+          <span class="section-eyebrow">Notre histoire</span>
+          <h2 class="section-title">Passionné par chaque <span class="text-accent">détail</span></h2>
+        </div>
+
+        <div class="about__grid">
+          <!-- REMPLACER : assets/images/about-photo.jpg -->
+          <div class="about__visual animate-on-scroll">
+            <div class="about__frame">
+              <div class="about__frame-placeholder">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><circle cx="12" cy="13" r="3"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                <span>Photo à remplacer</span>
+              </div>
+            </div>
+            <div class="about__chip">
+              <span class="about__chip-dot"></span>
+              <span class="about__chip-text">Disponible 6j/7</span>
+            </div>
+          </div>
+
+          <div class="about__content animate-on-scroll">
+            <p class="about__lead">
+              Passionné d'automobile depuis plus de 5 ans, j'ai fondé NOM_ENTREPRISE avec une obsession :
+              rendre à chaque habitacle l'éclat qu'il mérite. Chaque intervention est réalisée directement
+              à votre adresse, avec des produits professionnels haut de gamme et une attention portée
+              à chaque centimètre carré de votre véhicule.
+            </p>
+
+            <div class="about__values">
+              <div class="about__value">
+                <div class="about__value-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                  <strong>Produits professionnels certifiés</strong>
+                  <span>Gammes haut de gamme adaptées à tous les matériaux — cuir, alcantara, textile, plastiques.</span>
+                </div>
+              </div>
+
+              <div class="about__value">
+                <div class="about__value-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                </div>
+                <div>
+                  <strong>100% autonome, 0 contrainte</strong>
+                  <span>Nous intervenons chez vous sans besoin d'eau ni d'électricité de votre côté.</span>
+                </div>
+              </div>
+
+              <div class="about__value">
+                <div class="about__value-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                </div>
+                <div>
+                  <strong>Satisfaction garantie</strong>
+                  <span>Si le résultat ne vous convient pas, nous revenons corriger sans frais supplémentaires.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="about__stats">
+              <div class="about__stat">
+                <span class="about__stat-num">5 ans</span>
+                <span class="about__stat-label">d'expérience</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-num">1 200+</span>
+                <span class="about__stat-label">véhicules traités</span>
+              </div>
+              <div class="about__stat">
+                <span class="about__stat-num">4.9 / 5</span>
+                <span class="about__stat-label">note moyenne</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOYALTY ============ -->
+    <section class="loyalty" id="loyalty">
+      <div class="container">
+        <div class="section-head section-head--loose animate-on-scroll">
+          <span class="section-eyebrow">Programme exclusif</span>
+          <h2 class="section-title">Fidélité &amp; <span class="text-accent">Parrainage</span></h2>
+          <p class="section-subtitle">Plus vous roulez avec nous,<br>plus vous économisez.</p>
+        </div>
+
+        <div class="loyalty__grid">
+          <div class="loyalty__card animate-on-scroll">
+            <div class="loyalty-card">
+              <div class="loyalty-card__shine"></div>
+              <div class="loyalty-card__header">
+                <span class="loyalty-card__brand">NOM_ENTREPRISE</span>
+                <span class="loyalty-card__type">Carte fidélité</span>
+              </div>
+              <div class="loyalty-card__points">
+                <span class="loyalty-card__points-num" data-counter="60">0</span>
+                <span class="loyalty-card__points-label">/ 100 points</span>
+              </div>
+              <div class="loyalty-card__progress">
+                <div class="loyalty-card__progress-bar" style="--progress: 60%"></div>
+              </div>
+              <div class="loyalty-card__footer">
+                <span>Encore 40 points</span>
+                <strong>= 10 € offerts</strong>
+              </div>
+            </div>
+
+            <div class="loyalty__info">
+              <div class="loyalty__info-row">
+                <div class="loyalty__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
+                </div>
+                <div>
+                  <strong>10 points par prestation</strong>
+                  <span>Automatiquement crédités après paiement</span>
+                </div>
+              </div>
+              <div class="loyalty__info-row">
+                <div class="loyalty__info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+                </div>
+                <div>
+                  <strong>100 points = 10 € de remise</strong>
+                  <span>Cumulables sur vos prochaines réservations</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="loyalty__referral animate-on-scroll">
+            <div class="referral">
+              <div class="referral__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <h3 class="referral__title">Parrainez vos proches</h3>
+              <p class="referral__desc">
+                Partagez votre code unique. Votre filleul obtient
+                <span class="text-accent">−10%</span> sur sa première réservation, et vous cumulez des points bonus.
+              </p>
+
+              <div class="referral__code">
+                <span class="referral__code-label">Votre code</span>
+                <div class="referral__code-box">
+                  <span id="referralCode">ABCD1234</span>
+                  <button class="referral__copy" id="copyCode" aria-label="Copier le code de parrainage">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <button class="btn btn--accent btn--block" id="generateCode">Obtenir mon code</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq" id="faq">
+      <div class="container">
+        <div class="section-head animate-on-scroll">
+          <span class="section-eyebrow">Questions fréquentes</span>
+          <h2 class="section-title">Toutes vos <span class="text-accent">réponses</span></h2>
+        </div>
+
+        <div class="faq__list animate-on-scroll">
+
+          <div class="faq__item">
+            <button class="faq__question" type="button">
+              Venez-vous directement à mon domicile ?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Oui, nous nous déplaçons directement à votre adresse — domicile, lieu de travail ou parking — en Île-de-France. Vous n'avez rien à prévoir si ce n'est nous indiquer où votre véhicule est garé.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button">
+              Avez-vous besoin d'eau ou d'électricité ?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Non, nous sommes 100% autonomes. Notre équipement embarque tout le nécessaire — eau, aspirateur, machines. Aucun branchement requis de votre côté.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button">
+              Combien de temps dure la prestation ?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Selon la formule choisie : <strong>Essentiel ~1h</strong>, <strong>Premium ~2h</strong>, <strong>Complet ~3h30</strong>. Ces durées peuvent varier selon l'état général de votre véhicule. Nous vous prévenons toujours si une prolongation est nécessaire.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button">
+              Quels produits utilisez-vous ?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Nous utilisons exclusivement des produits professionnels certifiés, respectueux des matériaux (cuir, alcantara, plastique, tissu) et de l'environnement. Pas de produits abrasifs ni chimiques agressifs — uniquement des références utilisées en compétition automobile.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button">
+              Quelle est la différence entre les trois formules ?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                <strong>Essentiel</strong> couvre l'aspiration, le dépoussiérage et les vitres — idéal pour un entretien régulier.
+                <strong>Premium</strong> y ajoute le shampoing des sièges, la rénovation des plastiques et un traitement cuir nourrissant.
+                <strong>Complet</strong> inclut tout le Premium ainsi qu'une décontamination textile profonde, un traitement anti-bactérien à l'ozone et une protection longue durée.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button">
+              Comment puis-je payer ?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Le paiement s'effectue sur place, à la fin de la prestation, une fois que vous êtes satisfait du résultat. Nous acceptons les espèces, la carte bancaire et le virement.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button">
+              Que se passe-t-il si je dois annuler ?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                L'annulation est <strong>totalement gratuite jusqu'à 24h avant</strong> le rendez-vous. En dessous de ce délai, 30% du montant de la prestation pourra être retenu pour couvrir le déplacement.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <button class="faq__question" type="button">
+              Intervenez-vous sur les véhicules de société ou les flottes ?
+              <span class="faq__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq__answer">
+              <div class="faq__answer-inner">
+                Oui, nous proposons des tarifs adaptés pour les flottes d'entreprise, avec facturation et intervention sur site. <a href="#booking">Contactez-nous</a> pour un devis personnalisé.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ZONE D'INTERVENTION ============ -->
+    <section class="zone" id="zone">
+      <div class="container">
+        <div class="section-head animate-on-scroll">
+          <span class="section-eyebrow">Zone de déplacement</span>
+          <h2 class="section-title">Nous venons <span class="text-accent">chez vous</span></h2>
+        </div>
+
+        <div class="zone__wrap">
+          <div class="zone__content animate-on-scroll">
+            <p class="zone__desc">
+              Notre service se déplace directement à votre adresse. Nous couvrons l'ensemble de l'Île-de-France,
+              avec un accent particulier sur Paris et la petite couronne. Hors zone ou cas particuliers,
+              contactez-nous — nous trouverons toujours une solution.
+            </p>
+
+            <div class="zone__areas">
+              <div class="zone__areas-title">Paris &amp; petite couronne</div>
+              <div class="zone__tags">
+                <span class="zone__tag zone__tag--accent">Paris (75)</span>
+                <span class="zone__tag">Boulogne-Billancourt</span>
+                <span class="zone__tag">Neuilly-sur-Seine</span>
+                <span class="zone__tag">Issy-les-Moulineaux</span>
+                <span class="zone__tag">Levallois-Perret</span>
+                <span class="zone__tag">Courbevoie</span>
+                <span class="zone__tag">Rueil-Malmaison</span>
+                <span class="zone__tag">Vincennes</span>
+                <span class="zone__tag">Saint-Maur-des-Fossés</span>
+                <span class="zone__tag">Créteil</span>
+                <span class="zone__tag">Montreuil</span>
+                <span class="zone__tag">Pantin</span>
+                <span class="zone__tag">Saint-Denis</span>
+              </div>
+            </div>
+
+            <div class="zone__areas">
+              <div class="zone__areas-title">Grande couronne</div>
+              <div class="zone__tags">
+                <span class="zone__tag">Versailles</span>
+                <span class="zone__tag">Saint-Germain-en-Laye</span>
+                <span class="zone__tag">Massy</span>
+                <span class="zone__tag">Évry-Courcouronnes</span>
+                <span class="zone__tag">Cergy</span>
+                <span class="zone__tag">Melun</span>
+                <span class="zone__tag">Meaux</span>
+              </div>
+            </div>
+
+            <div class="zone__note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              Vous n'êtes pas sûr que nous intervenons dans votre zone ? <a href="#booking" style="color:var(--accent)">Contactez-nous</a>, nous trouverons une solution.
+            </div>
+          </div>
+
+          <div class="zone__visual animate-on-scroll">
+            <div class="zone__map-card">
+              <div class="zone__card-title">Frais de déplacement</div>
+
+              <div class="zone__radius-list">
+                <div class="zone__radius-item">
+                  <div class="zone__radius-header">
+                    <span class="zone__radius-km">0 — 20 km</span>
+                    <span class="zone__radius-price">Gratuit</span>
+                  </div>
+                  <div class="zone__radius-bar">
+                    <div class="zone__radius-fill" style="width: 100%"></div>
+                  </div>
+                </div>
+
+                <div class="zone__radius-item">
+                  <div class="zone__radius-header">
+                    <span class="zone__radius-km">20 — 40 km</span>
+                    <span class="zone__radius-price">+ 10 €</span>
+                  </div>
+                  <div class="zone__radius-bar">
+                    <div class="zone__radius-fill" style="width: 65%"></div>
+                  </div>
+                </div>
+
+                <div class="zone__radius-item">
+                  <div class="zone__radius-header">
+                    <span class="zone__radius-km">40 — 60 km</span>
+                    <span class="zone__radius-price">Sur devis</span>
+                  </div>
+                  <div class="zone__radius-bar">
+                    <div class="zone__radius-fill" style="width: 35%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <hr class="zone__contact-sep" />
+
+              <p class="zone__contact-text">
+                Une question sur votre adresse ou votre créneau ?<br>
+                Nous répondons rapidement.
+              </p>
+
+              <div class="zone__contact-btns">
+                <!-- REMPLACER : numéro WhatsApp -->
+                <a href="https://wa.me/33600000000" target="_blank" rel="noopener" class="btn btn--accent">
+                  WhatsApp
+                </a>
+                <!-- REMPLACER : numéro de téléphone -->
+                <a href="tel:+33000000000" class="btn btn--ghost">
+                  Appeler
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING ============ -->
+    <section class="booking" id="booking">
+      <div class="container">
+        <div class="section-head section-head--loose animate-on-scroll">
+          <span class="section-eyebrow">Réservation</span>
+          <h2 class="section-title">Réservez votre <span class="text-accent">créneau</span></h2>
+          <p class="section-subtitle">Confirmation immédiate par SMS et email.<br>Annulation gratuite jusqu'à 24h avant.</p>
+        </div>
+
+        <div class="booking__wrap animate-on-scroll">
+          <!-- REMPLACER : LIEN_CALENDLY (data-url) -->
+          <div class="calendly-inline-widget"
+               data-url="LIEN_CALENDLY"
+               style="min-width:320px;height:720px;"></div>
+          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+
+        <!-- Fallback si Calendly non configuré -->
+        <div class="booking__fallback animate-on-scroll" id="bookingFallback" style="display:none">
+          <p>La réservation en ligne sera disponible très prochainement.</p>
+          <p>En attendant, contactez-nous directement :</p>
+          <div class="zone__contact-btns" style="justify-content:center;margin-top:1rem">
+            <!-- REMPLACER : numéro WhatsApp -->
+            <a href="https://wa.me/33600000000" target="_blank" rel="noopener" class="btn btn--accent btn--lg">
+              Réserver via WhatsApp
+            </a>
+            <!-- REMPLACER : numéro de téléphone -->
+            <a href="tel:+33000000000" class="btn btn--ghost btn--lg">
+              Appeler directement
+            </a>
+          </div>
+        </div>
+
+        <div class="booking__reassurance animate-on-scroll">
+          <div class="booking__rea-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Confirmation instantanée
+          </div>
+          <div class="booking__rea-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Paiement sur place
+          </div>
+          <div class="booking__rea-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+            Annulation flexible
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="footer__logo">
+          <img src="assets/images/logo.svg" alt="NOM_ENTREPRISE" width="36" height="36" loading="lazy" />
+          <span>NOM_ENTREPRISE</span>
+        </a>
+        <p>Detailing automobile premium. Service à domicile sur rendez-vous en Île-de-France.</p>
+      </div>
+
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <!-- REMPLACER : coordonnées réelles -->
+        <a href="tel:+33000000000">+33 0 00 00 00 00</a>
+        <a href="mailto:contact@exemple.fr">contact@exemple.fr</a>
+        <span>Service mobile · Île-de-France</span>
+      </div>
+
+      <div class="footer__col">
+        <h4>Navigation</h4>
+        <a href="#services">Prestations</a>
+        <a href="#before-after">Avant / Après</a>
+        <a href="#reviews">Avis clients</a>
+        <a href="#about">À propos</a>
+        <a href="#loyalty">Fidélité</a>
+        <a href="#faq">FAQ</a>
+        <a href="#zone">Zone d'intervention</a>
+        <a href="#booking">Réserver</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Suivez-nous</h4>
+        <div class="footer__socials">
+          <!-- REMPLACER : URLs réseaux sociaux -->
+          <a href="#" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></a>
+          <!-- REMPLACER : WhatsApp -->
+          <a href="https://wa.me/33600000000" aria-label="WhatsApp" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container">
+        <span>© <span id="year"></span> NOM_ENTREPRISE. Tous droits réservés.</span>
+        <div>
+          <!-- REMPLACER : liens vers pages légales réelles -->
+          <a href="#">Mentions légales</a>
+          <a href="#">CGV</a>
+          <a href="#">Politique de confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script type="module" src="js/main.js"></script>
+
+  <!-- Fallback Calendly : affiche alternative si widget vide après 4s -->
+  <script>
+    setTimeout(function () {
+      var widget = document.querySelector('.calendly-inline-widget');
+      var fallback = document.getElementById('bookingFallback');
+      if (!widget || !fallback) return;
+      if (!widget.querySelector('iframe')) {
+        widget.style.display = 'none';
+        fallback.style.display = 'block';
+      }
+    }, 4000);
+  </script>
+
+</body>
+</html>
