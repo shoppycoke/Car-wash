@@ -46,8 +46,6 @@ function applyStaggerDelays() {
     { selector: '.services__grid',  delay: 130 },
     { selector: '.reviews__grid',   delay: 100 },
     { selector: '.gallery__grid',   delay: 100 },
-    { selector: '.about__stats',    delay: 80  },
-    { selector: '.about__values',   delay: 90  },
     { selector: '.faq__list',       delay: 60  },
     { selector: '.zone__tags',      delay: 35  },
   ];

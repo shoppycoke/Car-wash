@@ -192,8 +192,8 @@
   opacity: 0;
   transform: translateX(-52px);
   transition:
-    opacity 0.95s var(--ease-smooth),
-    transform 0.95s var(--ease-smooth);
+    opacity 1.1s var(--ease-smooth),
+    transform 1.1s var(--ease-smooth);
   will-change: opacity, transform;
 }
 
@@ -207,8 +207,8 @@
   opacity: 0;
   transform: translateX(52px);
   transition:
-    opacity 0.95s var(--ease-smooth),
-    transform 0.95s var(--ease-smooth);
+    opacity 1.1s var(--ease-smooth),
+    transform 1.1s var(--ease-smooth);
   will-change: opacity, transform;
 }
 

@@ -7,12 +7,14 @@ import { initLoyalty }     from './loyalty.js';
 import { initCalendly }    from './calendly.js';
 import { initFaq }         from './faq.js';
 import { initPageLoader }  from './page-loader.js';
-import { initScrollNav }   from './scroll-nav.js';
-import { initParallax }    from './parallax.js';
-import { initScrollNext }  from './scroll-next.js';
+import { initScrollNav }    from './scroll-nav.js';
+import { initParallax }     from './parallax.js';
+import { initScrollNext }   from './scroll-next.js';
+import { initSmoothScroll } from './smooth-scroll.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initPageLoader();
+  initSmoothScroll();
   initHeader();
   initAnimations();
   initTilt();

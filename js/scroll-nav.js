@@ -40,16 +40,20 @@ export function initScrollNav() {
   }
 
   /* ---- Click to navigate ---- */
+  const scrollTo = (el) => {
+    if (!el) return;
+    if (window.__scrollToSection) window.__scrollToSection(el);
+    else el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   dots.forEach((dot) => {
     dot.addEventListener('click', () => {
-      const target = document.getElementById(dot.dataset.target);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollTo(document.getElementById(dot.dataset.target));
     });
   });
 
   /* ---- Keyboard navigation (arrow keys) ---- */
   document.addEventListener('keydown', (e) => {
-    // Only when no input is focused
     const tag = document.activeElement?.tagName;
     if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
 
@@ -59,13 +63,11 @@ export function initScrollNav() {
 
     if (e.key === 'ArrowDown' && idx < sectionIds.length - 1) {
       e.preventDefault();
-      const next = document.getElementById(sectionIds[idx + 1]);
-      if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollTo(document.getElementById(sectionIds[idx + 1]));
     }
     if (e.key === 'ArrowUp' && idx > 0) {
       e.preventDefault();
-      const prev = document.getElementById(sectionIds[idx - 1]);
-      if (prev) prev.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollTo(document.getElementById(sectionIds[idx - 1]));
     }
   });
 
