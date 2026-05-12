@@ -6,6 +6,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: var(--header-height);
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -88,6 +90,11 @@ ul, ol {
 section {
   position: relative;
   padding: var(--space-24) 0;
+  scroll-snap-align: start;
+}
+
+footer {
+  scroll-snap-align: start;
 }
 
 /* Alternating section backgrounds */
