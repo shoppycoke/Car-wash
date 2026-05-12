@@ -7,7 +7,7 @@
 html {
   height: 100%;
   scroll-behavior: smooth;
-  scroll-snap-type: y proximity;
+  scroll-snap-type: y mandatory;
   scroll-padding-top: var(--header-height);
   overflow-x: hidden;
   touch-action: pan-y;
@@ -23,7 +23,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-base);
   line-height: var(--lh-normal);
-  overscroll-behavior-x: none;
+  overscroll-behavior: none;
   /* overflow-x: hidden retiré — brise position:fixed sur iOS Safari */
 }
 
@@ -93,6 +93,7 @@ section {
   flex-direction: column;
   justify-content: center;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   overflow: hidden;
   padding: var(--header-height) 0 var(--space-10);
 }
@@ -106,9 +107,12 @@ section {
   }
 }
 
-/* Mobile bar (≤900px) — bottom padding doit dépasser la hauteur de la barre fixe */
+/* Mobile bar (≤900px) — bottom padding doit dépasser la hauteur de la barre fixe
+   scroll-snap-stop: normal permet de scroller librement dans les sections
+   plus hautes que le viewport (services 3 cartes, booking Calendly…) */
 @media (max-width: 900px) {
   section {
+    scroll-snap-stop: normal;
     padding-bottom: calc(var(--space-16) + 80px);
   }
 }
