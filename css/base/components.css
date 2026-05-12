@@ -144,3 +144,19 @@
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
+/* ========== Responsive overrides ========== */
+@media (max-width: 768px) {
+  .section-head {
+    margin-bottom: var(--space-8);
+  }
+
+  .section-head--loose .section-subtitle {
+    font-size: var(--fs-base);
+  }
+
+  .btn--lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--fs-sm);
+  }
+}

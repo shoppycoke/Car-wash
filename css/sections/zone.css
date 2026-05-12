@@ -199,3 +199,17 @@
     gap: var(--space-8);
   }
 }
+
+@media (max-width: 768px) {
+  .zone__wrap {
+    gap: var(--space-6);
+  }
+
+  .zone__map-card {
+    padding: var(--space-6);
+  }
+
+  .zone__desc {
+    font-size: var(--fs-base);
+  }
+}

@@ -173,7 +173,23 @@
 @media (max-width: 1024px) {
   .services__grid {
     grid-template-columns: 1fr;
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .services__grid {
+    max-width: 100%;
+    gap: var(--space-4);
+  }
+
+  .service-card {
+    padding: var(--space-6);
+  }
+
+  .price {
+    font-size: var(--fs-3xl);
   }
 }

@@ -7,9 +7,8 @@
 html {
   height: 100%;
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-  scroll-padding-top: 0;
-  overscroll-behavior: none;
+  scroll-snap-type: y proximity;
+  scroll-padding-top: var(--header-height);
   overflow-x: hidden;
   touch-action: pan-y;
   color-scheme: dark;
@@ -25,7 +24,7 @@ body {
   font-size: var(--fs-base);
   line-height: var(--lh-normal);
   overflow-x: hidden;
-  overscroll-behavior: none;
+  overscroll-behavior-x: none;
 }
 
 img, svg, video {
@@ -87,29 +86,34 @@ ul, ol {
 /* ── Section base — fullscreen snap ── */
 section {
   position: relative;
-  height: 100vh;
-  height: 100svh;
+  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   scroll-snap-align: start;
-  scroll-snap-stop: always;
   overflow: hidden;
   padding: var(--header-height) 0 var(--space-10);
 }
 
-/* Mobile: allow tall sections to scroll internally, start from top
-   so justify-content:center doesn't clip content above scroll origin. */
+/* Tablet & mobile: anchor content at top, allow section to grow naturally */
+@media (max-width: 1024px) {
+  section {
+    justify-content: flex-start;
+    padding-top: calc(var(--header-height) + var(--space-8));
+    padding-bottom: var(--space-16);
+  }
+}
+
 @media (max-width: 768px) {
   section {
-    overflow-y: auto;
-    justify-content: flex-start;
+    padding-top: calc(var(--header-height) + var(--space-6));
+    padding-bottom: var(--space-12);
   }
 }
 
 footer {
   scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 /* Alternating section backgrounds */

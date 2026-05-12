@@ -356,3 +356,20 @@
     aspect-ratio: 16 / 11;
   }
 }
+
+@media (max-width: 768px) {
+  .loyalty-card {
+    aspect-ratio: unset;
+    min-height: 200px;
+    padding: var(--space-6);
+  }
+  .loyalty-card__points-num {
+    font-size: var(--fs-4xl);
+  }
+  .referral {
+    padding: var(--space-6);
+  }
+  .referral__title {
+    font-size: var(--fs-xl);
+  }
+}

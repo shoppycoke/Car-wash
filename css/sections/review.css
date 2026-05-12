@@ -214,13 +214,31 @@
   font-size: var(--fs-md);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+  .reviews__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
   .reviews__grid {
     grid-template-columns: 1fr;
+    gap: var(--space-4);
   }
   .reviews__rating,
   .reviews__banner {
     flex-direction: column;
     text-align: center;
+    gap: var(--space-4);
+  }
+  .reviews__score {
+    justify-content: center;
+  }
+  .reviews__score-number {
+    font-size: var(--fs-3xl);
+  }
+  .reviews__banner {
+    padding: var(--space-5);
   }
 }

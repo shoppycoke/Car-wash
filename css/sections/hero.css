@@ -138,6 +138,22 @@
   flex-wrap: wrap;
 }
 
+/* Hero stays vertically centered on all viewports */
+@media (max-width: 1024px) {
+  .hero {
+    justify-content: center;
+    height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
+  }
+}
+
 @media (max-width: 768px) {
+  .hero {
+    padding-top: calc(var(--header-height) + var(--space-6));
+    padding-bottom: var(--space-8);
+  }
   .hero__scroll { display: none; }
+  .hero__glow--1 { width: 300px; height: 300px; opacity: 0.1; }
+  .hero__glow--2 { width: 350px; height: 350px; opacity: 0.08; }
 }

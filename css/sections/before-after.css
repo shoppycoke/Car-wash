@@ -7,6 +7,7 @@
   overflow: hidden;
   user-select: none;
   cursor: ew-resize;
+  touch-action: none;
   border: 1px solid rgba(91, 192, 190, 0.22);
   box-shadow: var(--shadow-xl), 0 0 60px rgba(91, 192, 190, 0.08);
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
