@@ -125,9 +125,32 @@
 @media (max-width: 768px) {
   .ba__slider {
     aspect-ratio: 4 / 3;
+    border-radius: var(--radius-md);
   }
   .ba__handle-circle {
     width: 48px;
     height: 48px;
   }
+}
+
+@media (max-width: 480px) {
+  .ba__slider {
+    aspect-ratio: 3 / 2;
+    border-radius: var(--radius-sm);
+  }
+  .ba__handle-circle {
+    width: 44px;
+    height: 44px;
+  }
+  .ba__handle-circle svg {
+    width: 18px;
+    height: 18px;
+  }
+  .ba__label {
+    font-size: 0.65rem;
+    padding: var(--space-1) var(--space-2);
+    top: var(--space-3);
+  }
+  .ba__label--before { left: var(--space-3); }
+  .ba__label--after  { right: var(--space-3); }
 }

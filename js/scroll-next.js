@@ -26,7 +26,8 @@ export function initScrollNext() {
     btn.innerHTML = SVG;
 
     btn.addEventListener('click', () => {
-      nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (window.__scrollToSection) window.__scrollToSection(nextSection);
+      else nextSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
     wrap.appendChild(btn);

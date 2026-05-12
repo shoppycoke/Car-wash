@@ -79,4 +79,28 @@
     flex-direction: column;
     align-items: center;
   }
+
+  /* Override Calendly inline height for mobile */
+  .booking__wrap .calendly-inline-widget {
+    height: 580px !important;
+    min-width: 280px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking__wrap {
+    padding: var(--space-2);
+  }
+
+  .booking__wrap .calendly-inline-widget {
+    height: 520px !important;
+  }
+
+  .booking__reassurance {
+    gap: var(--space-3);
+  }
+
+  .booking__rea-item {
+    font-size: var(--fs-xs);
+  }
 }

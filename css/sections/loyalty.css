@@ -373,3 +373,39 @@
     font-size: var(--fs-xl);
   }
 }
+
+@media (max-width: 480px) {
+  .loyalty-card {
+    padding: var(--space-5);
+    min-height: 180px;
+  }
+
+  .loyalty-card__brand {
+    font-size: var(--fs-base);
+  }
+
+  .loyalty-card__points-num {
+    font-size: var(--fs-3xl);
+  }
+
+  .loyalty-card__points-label {
+    font-size: var(--fs-sm);
+  }
+
+  .loyalty__info-row {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .referral {
+    padding: var(--space-5);
+  }
+
+  .referral__title {
+    font-size: var(--fs-lg);
+  }
+
+  .referral__code-box span {
+    font-size: var(--fs-base);
+    letter-spacing: 0.1em;
+  }
+}

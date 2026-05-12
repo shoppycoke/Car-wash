@@ -183,3 +183,41 @@
     font-size: var(--fs-3xl);
   }
 }
+
+@media (max-width: 480px) {
+  .services__grid {
+    gap: var(--space-3);
+  }
+
+  .service-card {
+    padding: var(--space-5);
+  }
+
+  .service-card__badge {
+    font-size: 0.65rem;
+    padding: 3px var(--space-2);
+    top: var(--space-4);
+    right: var(--space-4);
+  }
+
+  .price {
+    font-size: var(--fs-2xl);
+  }
+
+  .price span {
+    font-size: var(--fs-base);
+  }
+
+  .service-card__desc {
+    font-size: var(--fs-xs);
+    margin-bottom: var(--space-4);
+  }
+
+  .service-card__features {
+    margin-bottom: var(--space-6);
+  }
+
+  .service-card__features li {
+    font-size: var(--fs-xs);
+  }
+}

@@ -168,7 +168,19 @@
 
 @media (max-width: 480px) {
   .gallery__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-3);
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  .gallery__card {
+    border-radius: var(--radius-md);
+  }
+
+  .gallery__placeholder-label {
+    font-size: 0.65rem;
+  }
+
+  .gallery__insta-text {
+    font-size: var(--fs-xs);
   }
 }
