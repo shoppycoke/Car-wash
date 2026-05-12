@@ -22,7 +22,7 @@
     left: 0;
     right: 0;
     width: 100%;
-    z-index: 9999;
+    z-index: 99999;
 
     /* Layout */
     flex-direction: row;
@@ -144,5 +144,49 @@
   .mobile-bar__btn--wa svg {
     width: 20px;
     height: 20px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────
+   WhatsApp FAB — visible desktop uniquement (> 900px)
+   ───────────────────────────────────────────────────── */
+.whatsapp-fab {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .whatsapp-fab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: var(--z-floating);
+    padding: 12px 22px;
+    border-radius: 9999px;
+    background: #25D366;
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    text-decoration: none;
+    box-shadow: 0 8px 28px rgba(37, 211, 102, 0.38);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .whatsapp-fab:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 42px rgba(37, 211, 102, 0.55);
+  }
+
+  .whatsapp-fab svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+    flex-shrink: 0;
   }
 }
