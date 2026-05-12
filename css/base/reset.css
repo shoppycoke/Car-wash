@@ -23,8 +23,8 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-base);
   line-height: var(--lh-normal);
-  overflow-x: hidden;
   overscroll-behavior-x: none;
+  /* overflow-x: hidden retiré — brise position:fixed sur iOS Safari */
 }
 
 img, svg, video {

@@ -1,154 +1,148 @@
-/* ================================================
-   MOBILE BOTTOM BAR — WhatsApp + Réserver
-   Actif uniquement sur mobile (max-width: 900px)
-   ================================================ */
+/* =====================================================
+   MOBILE BOTTOM BAR — WhatsApp + CTA Réserver
+   Classes HTML : .mobile-bar__btn / .mobile-bar__btn--wa / .mobile-bar__btn--cta
+   ===================================================== */
 
-/* ── Desktop : bouton WhatsApp flottant classique ── */
-.whatsapp-fab {
-  position: fixed;
-  bottom: 28px;
-  right: 24px;
-  z-index: var(--z-floating);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-3) var(--space-5);
-  background: #25D366;
-  color: #fff;
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  border-radius: var(--radius-full);
-  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.35);
-  text-decoration: none;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-  white-space: nowrap;
-  border: none;
-  cursor: pointer;
-}
-
-.whatsapp-fab svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-.whatsapp-fab:hover {
-  transform: translateY(-3px) scale(1.04);
-  box-shadow: 0 14px 40px rgba(37, 211, 102, 0.5);
-}
-
-/* ── Mobile bottom bar ── */
+/* ── Masqué partout sauf mobile ── */
 .mobile-bar {
-  display: none; /* caché sur desktop */
+  display: none;
 }
 
+/* ─────────────────────────────────────────────────────
+   Actif UNIQUEMENT sur mobile & tablette  ≤ 900px
+   Tout le positionnement est ici, dans le media query.
+   ───────────────────────────────────────────────────── */
 @media (max-width: 900px) {
 
-  /* Masquer le FAB WhatsApp desktop sur mobile */
-  .whatsapp-fab {
-    display: none;
-  }
-
-  /* Masquer l'ancien floating-cta générique */
-  .floating-cta {
-    display: none !important;
-  }
-
-  /* Compensation : évite que la barre cache le contenu */
-  body {
-    padding-bottom: calc(80px + env(safe-area-inset-bottom));
-  }
-
-  /* ── La vraie bottom bar ── */
   .mobile-bar {
+    /* Positionnement : collé au bas du viewport, pas d'un conteneur */
     display: flex;
-    align-items: center;
-    gap: var(--space-3);
-
     position: fixed;
     bottom: 0;
     left: 0;
+    right: 0;
     width: 100%;
     z-index: 9999;
 
-    padding: var(--space-3) var(--space-4);
-    padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom));
-
-    /* Glassmorphism */
-    background: rgba(10, 10, 10, 0.82);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.5);
-
-    /* Anti-overflow */
+    /* Layout */
+    flex-direction: row;
+    align-items: stretch;
+    gap: 10px;
     box-sizing: border-box;
-    overflow: hidden;
+
+    /* Espacement + safe area iPhone home indicator / Dynamic Island */
+    padding: 10px 16px;
+    padding-bottom: max(env(safe-area-inset-bottom, 0px), 10px);
+
+    /* Design glassmorphism */
+    background: rgba(11, 19, 43, 0.97);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border-top: 1px solid rgba(91, 192, 190, 0.15);
+    box-shadow: 0 -4px 28px rgba(0, 0, 0, 0.3);
+
+    /* Entrée discrète : fade seulement.
+       PAS de transform → position:fixed + transform casse le repère de
+       positionnement sur iOS Safari (la barre suit le scroll). */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
   }
 
-  /* Bouton WhatsApp dans la bar */
-  .mobile-bar__whatsapp {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    flex: 1;
-    padding: var(--space-3) var(--space-2);
-    background: rgba(37, 211, 102, 0.12);
-    border: 1px solid rgba(37, 211, 102, 0.3);
-    color: #25D366;
-    font-family: var(--font-body);
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-semibold);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    transition: background var(--transition-fast), border-color var(--transition-fast);
-    white-space: nowrap;
-    cursor: pointer;
+  /* Déclenchée par JS après le page loader */
+  .mobile-bar.is-visible {
+    opacity: 1;
+    pointer-events: auto;
   }
 
-  .mobile-bar__whatsapp svg {
-    width: 19px;
-    height: 19px;
-    flex-shrink: 0;
+  /* Décale le bas du body pour qu'aucun contenu ne soit caché par la barre */
+  body {
+    padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
   }
 
-  .mobile-bar__whatsapp:active {
-    background: rgba(37, 211, 102, 0.22);
+}
+
+/* ─────────────────────────────────────────────────────
+   Boutons — base commune
+   ───────────────────────────────────────────────────── */
+.mobile-bar__btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 14px;
+  min-height: 48px;
+  border-radius: 18px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.mobile-bar__btn:active {
+  transform: scale(0.96);
+  opacity: 0.8;
+}
+
+/* ── WhatsApp ── */
+.mobile-bar__btn--wa {
+  flex: 0 0 calc(48% - 5px);
+  background: rgba(37, 211, 102, 0.09);
+  border: 1.5px solid rgba(37, 211, 102, 0.28);
+  color: #25D366;
+}
+
+.mobile-bar__btn--wa:active {
+  background: rgba(37, 211, 102, 0.18);
+}
+
+.mobile-bar__btn--wa svg {
+  width: 18px;
+  height: 18px;
+  fill: #25D366;
+  flex-shrink: 0;
+}
+
+.mobile-bar__btn--wa span {
+  font-size: 0.875rem;
+}
+
+/* ── CTA Réserver ── */
+.mobile-bar__btn--cta {
+  flex: 1;
+  background: linear-gradient(135deg, #3A86FF 0%, #1a6fff 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 16px rgba(58, 134, 255, 0.35);
+}
+
+.mobile-bar__btn--cta:active {
+  box-shadow: 0 2px 8px rgba(58, 134, 255, 0.25);
+}
+
+/* ─────────────────────────────────────────────────────
+   Très petits écrans ≤ 360px : WhatsApp = icône seule
+   ───────────────────────────────────────────────────── */
+@media (max-width: 360px) {
+  .mobile-bar__btn--wa {
+    flex: 0 0 52px;
+    padding: 0;
+    border-radius: 9999px;
   }
 
-  /* Bouton Réserver dans la bar */
-  .mobile-bar__booking {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-2);
-    flex: 2;
-    padding: var(--space-3) var(--space-2);
-    background: var(--gradient-accent);
-    color: var(--bg);
-    font-family: var(--font-body);
-    font-size: var(--fs-sm);
-    font-weight: var(--fw-bold);
-    border-radius: var(--radius-md);
-    text-decoration: none;
-    border: none;
-    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
-    transition: filter var(--transition-fast), transform var(--transition-fast);
-    white-space: nowrap;
-    cursor: pointer;
-    letter-spacing: 0.01em;
+  .mobile-bar__btn--wa span {
+    display: none;
   }
 
-  .mobile-bar__booking svg {
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-  }
-
-  .mobile-bar__booking:active {
-    filter: brightness(1.1);
-    transform: scale(0.98);
+  .mobile-bar__btn--wa svg {
+    width: 20px;
+    height: 20px;
   }
 }
