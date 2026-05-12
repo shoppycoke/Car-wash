@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Mon espace — Dracarys Auto</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base/variables.css" />
+  <link rel="stylesheet" href="css/pages/dashboard.css" />
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+</head>
+<body class="dash-body">
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="app-header__inner">
+      <a href="index.html" class="app-header__logo">
+        <img src="assets/images/logo.png" alt="Dracarys Auto" width="32" height="32" />
+        <span>Dracarys Auto</span>
+      </a>
+      <div class="app-header__actions">
+        <span class="app-header__name" id="headerName"></span>
+        <button class="app-header__logout" id="logoutBtn">Déconnexion</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Loading -->
+  <div class="dash-loading" id="dashLoading">
+    <div class="dash-loading__spinner"></div>
+  </div>
+
+  <!-- Contenu principal -->
+  <main class="dash-main" id="dashMain" hidden>
+
+    <!-- ── Points fidélité ── -->
+    <section class="dash-hero">
+      <div class="dash-container">
+        <div class="dash-hero__inner">
+
+          <div class="dash-points-card">
+            <div class="dash-points-card__bg" aria-hidden="true"></div>
+            <p class="dash-points-card__label">Points fidélité</p>
+            <div class="dash-points-card__value">
+              <span id="pointsTotal">0</span>
+              <span class="dash-points-card__unit">pts</span>
+            </div>
+            <div class="dash-points-progress">
+              <div class="dash-points-progress__bar">
+                <div class="dash-points-progress__fill" id="pointsProgressBar" style="width:0%"></div>
+              </div>
+              <p class="dash-points-progress__label" id="pointsProgressLabel">Plus que 100 points pour une réduction de 5 €</p>
+            </div>
+            <button class="dash-points-redeem" id="redeemBtn" disabled>
+              Échanger 100 pts → 5 € de réduction
+            </button>
+          </div>
+
+          <div class="dash-stats">
+            <div class="dash-stat-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M9 7H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-3M13 11V7a2 2 0 0 1 4 0v4M17 11h-4"/>
+                <circle cx="17" cy="7" r="1"/>
+              </svg>
+              <div>
+                <span class="dash-stat-card__value" id="statReductions">0</span>
+                <span class="dash-stat-card__label">Réduction(s) disponible(s)</span>
+              </div>
+            </div>
+            <div class="dash-stat-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+              </svg>
+              <div>
+                <span class="dash-stat-card__value" id="statPrestations">0</span>
+                <span class="dash-stat-card__label">Prestation(s)</span>
+              </div>
+            </div>
+            <div class="dash-stat-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+              <div>
+                <span class="dash-stat-card__value" id="statParrainages">0</span>
+                <span class="dash-stat-card__label">Parrainage(s) validé(s)</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Réductions ── -->
+    <section class="dash-section">
+      <div class="dash-container">
+        <h2 class="dash-section__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="1" y="4" width="22" height="16" rx="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+          </svg>
+          Mes réductions
+        </h2>
+        <div class="dash-reductions" id="reductionsList"></div>
+      </div>
+    </section>
+
+    <!-- ── Historique ── -->
+    <section class="dash-section">
+      <div class="dash-container">
+        <h2 class="dash-section__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+          Historique des prestations
+        </h2>
+        <div id="historyList"></div>
+      </div>
+    </section>
+
+    <!-- ── Parrainage ── -->
+    <section class="dash-section dash-section--parrainage">
+      <div class="dash-container">
+        <div class="dash-referral">
+          <div class="dash-referral__content">
+            <h2 class="dash-referral__title">Invitez vos proches</h2>
+            <p class="dash-referral__desc">
+              Partagez votre code personnel. Pour chaque ami qui réserve,
+              vous obtenez <strong>−10 % sur votre prochaine prestation</strong>.
+            </p>
+            <div class="dash-referral__rewards">
+              <div class="dash-referral__reward">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                Votre filleul bénéficie d'une réduction à l'inscription
+              </div>
+              <div class="dash-referral__reward">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+                Vous recevez −10 % à chaque parrainage validé
+              </div>
+            </div>
+          </div>
+          <div class="dash-referral__code-block">
+            <p class="dash-referral__code-label">Mon code</p>
+            <div class="dash-referral__code-wrap">
+              <span class="dash-referral__code" id="referralCode">------</span>
+              <button class="dash-referral__copy" id="copyCodeBtn" aria-label="Copier le code">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <rect x="9" y="9" width="13" height="13" rx="2"/>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                </svg>
+                Copier
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Mon compte ── -->
+    <section class="dash-section">
+      <div class="dash-container">
+        <h2 class="dash-section__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          Mon compte
+        </h2>
+        <div class="dash-account">
+          <div class="dash-account__info" id="accountInfo"></div>
+          <div class="dash-account__actions">
+            <button class="dash-account__delete" id="deleteAccountBtn">
+              Supprimer mon compte
+            </button>
+          </div>
+          <p class="dash-account__rgpd">
+            Vos données sont protégées conformément au RGPD.
+            <a href="#">Politique de confidentialité</a> ·
+            <a href="#">Mentions légales</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal confirmation -->
+  <div class="dash-modal" id="confirmModal" role="dialog" aria-modal="true"
+       aria-labelledby="modalTitle" hidden>
+    <div class="dash-modal__backdrop"></div>
+    <div class="dash-modal__box">
+      <h3 id="modalTitle" class="dash-modal__title"></h3>
+      <p  id="modalBody"  class="dash-modal__body"></p>
+      <div class="dash-modal__actions">
+        <button class="btn--ghost"   id="modalCancel">Annuler</button>
+        <button class="btn--accent"  id="modalConfirm">Confirmer</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
