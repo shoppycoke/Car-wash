@@ -530,111 +530,174 @@
     <!-- ============ ZONE D'INTERVENTION ============ -->
     <section class="zone" id="zone">
       <div class="container">
+
         <div class="section-head animate-on-scroll anim-blur">
-          <span class="section-eyebrow">Zone de déplacement</span>
+          <span class="section-eyebrow">Zone d'intervention</span>
           <h2 class="section-title">Nous venons <span class="text-accent">chez vous</span></h2>
         </div>
 
-        <div class="zone__wrap">
-          <div class="zone__content anim-left">
-            <p class="zone__desc">
-              Notre service se déplace directement à votre adresse. Nous couvrons l'ensemble de l'Île-de-France,
-              avec un accent particulier sur Paris et la petite couronne. Hors zone ou cas particuliers,
-              contactez-nous — nous trouverons toujours une solution.
-            </p>
+        <p class="zone__lead animate-on-scroll anim-blur">
+          Déplacement à domicile dans toute la région toulousaine.
+        </p>
 
-            <div class="zone__areas">
-              <div class="zone__areas-title">Paris &amp; petite couronne</div>
-              <div class="zone__tags">
-                <span class="zone__tag zone__tag--accent">Paris (75)</span>
-                <span class="zone__tag">Boulogne-Billancourt</span>
-                <span class="zone__tag">Neuilly-sur-Seine</span>
-                <span class="zone__tag">Issy-les-Moulineaux</span>
-                <span class="zone__tag">Levallois-Perret</span>
-                <span class="zone__tag">Courbevoie</span>
-                <span class="zone__tag">Rueil-Malmaison</span>
-                <span class="zone__tag">Vincennes</span>
-                <span class="zone__tag">Saint-Maur-des-Fossés</span>
-                <span class="zone__tag">Créteil</span>
-                <span class="zone__tag">Montreuil</span>
-                <span class="zone__tag">Pantin</span>
-                <span class="zone__tag">Saint-Denis</span>
+        <div class="zone__kpis animate-on-scroll anim-blur">
+          <div class="zone__kpi">
+            <span class="zone__kpi-val">60<span class="zone__kpi-unit">km</span></span>
+            <span class="zone__kpi-label">Rayon max</span>
+          </div>
+          <div class="zone__kpi-div"></div>
+          <div class="zone__kpi">
+            <span class="zone__kpi-val">0<span class="zone__kpi-unit">€</span></span>
+            <span class="zone__kpi-label">Déplacement</span>
+          </div>
+          <div class="zone__kpi-div"></div>
+          <div class="zone__kpi">
+            <span class="zone__kpi-val">9<span class="zone__kpi-unit">+</span></span>
+            <span class="zone__kpi-label">Villes couvertes</span>
+          </div>
+        </div>
+
+        <div class="zone__body">
+
+          <!-- Radar map -->
+          <div class="zone__radar-wrap animate-on-scroll anim-left">
+            <div class="zone__radar">
+              <!-- Rings -->
+              <div class="zone__ring zone__ring--1"></div>
+              <div class="zone__ring zone__ring--2">
+                <span class="zone__ring-lbl">40 km</span>
               </div>
-            </div>
-
-            <div class="zone__areas">
-              <div class="zone__areas-title">Grande couronne</div>
-              <div class="zone__tags">
-                <span class="zone__tag">Versailles</span>
-                <span class="zone__tag">Saint-Germain-en-Laye</span>
-                <span class="zone__tag">Massy</span>
-                <span class="zone__tag">Évry-Courcouronnes</span>
-                <span class="zone__tag">Cergy</span>
-                <span class="zone__tag">Melun</span>
-                <span class="zone__tag">Meaux</span>
+              <div class="zone__ring zone__ring--3">
+                <span class="zone__ring-lbl">60 km</span>
               </div>
-            </div>
-
-            <div class="zone__note">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
-              Vous n'êtes pas sûr que nous intervenons dans votre zone ? <a href="#booking" style="color:var(--accent)">Contactez-nous</a>, nous trouverons une solution.
+              <!-- Crosshair -->
+              <div class="zone__line zone__line--h"></div>
+              <div class="zone__line zone__line--v"></div>
+              <!-- Scanning beam -->
+              <div class="zone__scan" aria-hidden="true"></div>
+              <!-- Center: La Salvetat-Saint-Gilles -->
+              <div class="zone__origin">
+                <div class="zone__origin-core"></div>
+                <span class="zone__origin-label">La Salvetat-<br>Saint-Gilles</span>
+              </div>
+              <!-- City pins — x/y are % from top-left of the radar square, center = 50%/50% -->
+              <div class="zone__pin" style="--x:72%;--y:57%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Toulouse</span>
+              </div>
+              <div class="zone__pin" style="--x:64%;--y:44%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Colomiers</span>
+              </div>
+              <div class="zone__pin" style="--x:67%;--y:30%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Blagnac</span>
+              </div>
+              <div class="zone__pin" style="--x:60%;--y:66%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Tournefeuille</span>
+              </div>
+              <div class="zone__pin" style="--x:53%;--y:80%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Muret</span>
+              </div>
+              <div class="zone__pin" style="--x:50%;--y:10%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Montauban</span>
+              </div>
+              <div class="zone__pin zone__pin--far" style="--x:85%;--y:19%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Albi</span>
+              </div>
+              <div class="zone__pin zone__pin--far" style="--x:13%;--y:51%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Auch</span>
+              </div>
+              <div class="zone__pin zone__pin--far" style="--x:88%;--y:71%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Castres</span>
+              </div>
             </div>
           </div>
 
-          <div class="zone__visual anim-right">
-            <div class="zone__map-card">
-              <div class="zone__card-title">Frais de déplacement</div>
+          <!-- Sidebar -->
+          <div class="zone__sidebar animate-on-scroll anim-right">
 
-              <div class="zone__radius-list">
-                <div class="zone__radius-item">
-                  <div class="zone__radius-header">
-                    <span class="zone__radius-km">0 — 20 km</span>
-                    <span class="zone__radius-price">Gratuit</span>
-                  </div>
-                  <div class="zone__radius-bar">
-                    <div class="zone__radius-fill" style="width: 100%"></div>
-                  </div>
-                </div>
+            <p class="zone__desc">
+              Nous intervenons directement à votre adresse — sans déplacement en atelier.
+              Hors zone ou cas particulier, contactez-nous.
+            </p>
 
-                <div class="zone__radius-item">
-                  <div class="zone__radius-header">
-                    <span class="zone__radius-km">20 — 40 km</span>
-                    <span class="zone__radius-price">+ 10 €</span>
-                  </div>
-                  <div class="zone__radius-bar">
-                    <div class="zone__radius-fill" style="width: 65%"></div>
-                  </div>
-                </div>
-
-                <div class="zone__radius-item">
-                  <div class="zone__radius-header">
-                    <span class="zone__radius-km">40 — 60 km</span>
-                    <span class="zone__radius-price">Sur devis</span>
-                  </div>
-                  <div class="zone__radius-bar">
-                    <div class="zone__radius-fill" style="width: 35%"></div>
-                  </div>
-                </div>
-              </div>
-
-              <hr class="zone__contact-sep" />
-
-              <p class="zone__contact-text">
-                Une question sur votre adresse ou votre créneau ?<br>
-                Nous répondons rapidement.
-              </p>
-
-              <div class="zone__contact-btns">
-                <!-- REMPLACER : numéro WhatsApp -->
-                <a href="https://wa.me/33600000000" target="_blank" rel="noopener" class="btn btn--accent">
-                  WhatsApp
-                </a>
-                <!-- REMPLACER : numéro de téléphone -->
-                <a href="tel:+33000000000" class="btn btn--ghost">
-                  Appeler
-                </a>
-              </div>
+            <div>
+              <p class="zone__cities-title">Villes desservies</p>
+              <ul class="zone__cities-list" role="list">
+                <li class="zone__city zone__city--base">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">La Salvetat-Saint-Gilles</span>
+                  <span class="zone__city-badge">Base</span>
+                </li>
+                <li class="zone__city">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">Toulouse</span>
+                  <span class="zone__city-km">~15 km</span>
+                </li>
+                <li class="zone__city">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">Colomiers</span>
+                  <span class="zone__city-km">~8 km</span>
+                </li>
+                <li class="zone__city">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">Blagnac</span>
+                  <span class="zone__city-km">~12 km</span>
+                </li>
+                <li class="zone__city">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">Tournefeuille</span>
+                  <span class="zone__city-km">~10 km</span>
+                </li>
+                <li class="zone__city">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">Muret</span>
+                  <span class="zone__city-km">~27 km</span>
+                </li>
+                <li class="zone__city">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">Montauban</span>
+                  <span class="zone__city-km">~50 km</span>
+                </li>
+                <li class="zone__city">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">Albi</span>
+                  <span class="zone__city-km">~70 km</span>
+                </li>
+                <li class="zone__city">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">Auch</span>
+                  <span class="zone__city-km">~75 km</span>
+                </li>
+                <li class="zone__city">
+                  <span class="zone__city-dot"></span>
+                  <span class="zone__city-name">Castres</span>
+                  <span class="zone__city-km">~80 km</span>
+                </li>
+              </ul>
             </div>
+
+            <div class="zone__note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>
+              </svg>
+              <span>Votre ville n'est pas listée ? <a href="#booking" style="color:var(--accent)">Contactez-nous</a>, nous trouverons une solution.</span>
+            </div>
+
+            <div class="zone__contact-btns">
+              <!-- REMPLACER : numéro WhatsApp -->
+              <a href="https://wa.me/33600000000" target="_blank" rel="noopener" class="btn btn--accent">WhatsApp</a>
+              <!-- REMPLACER : numéro de téléphone -->
+              <a href="tel:+33600000000" class="btn btn--ghost">Appeler</a>
+            </div>
+
           </div>
         </div>
       </div>

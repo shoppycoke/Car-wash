@@ -1,6 +1,6 @@
 # CLAUDE.md — sitedtl
 
-Site vitrine pour un service de detailing automobile premium à domicile (Île-de-France).
+Site vitrine pour un service de detailing automobile premium à domicile (région toulousaine — La Salvetat-Saint-Gilles).
 Stack 100% vanilla : HTML/CSS/JS, aucun framework, modules ES6.
 
 ---
