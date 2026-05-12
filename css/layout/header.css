@@ -6,17 +6,17 @@
   height: var(--header-height);
   z-index: var(--z-header);
   transition: all var(--transition-base);
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(11, 19, 43, 0.65);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   border-bottom: 1px solid transparent;
 }
 
 .header.is-scrolled {
   height: var(--header-height-shrunk);
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(11, 19, 43, 0.92);
   border-bottom-color: var(--border-glass);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(91, 192, 190, 0.06);
 }
 
 .header__inner {
@@ -36,6 +36,11 @@
   font-size: var(--fs-md);
   letter-spacing: -0.01em;
   color: var(--text);
+  transition: opacity var(--transition-fast);
+}
+
+.header__logo:hover {
+  opacity: 0.85;
 }
 
 .header__logo img {
@@ -118,9 +123,9 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.99);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(11, 19, 43, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-top: 1px solid var(--border-glass);
   padding: var(--space-6);
   display: flex;
@@ -143,12 +148,18 @@
   font-weight: var(--fw-medium);
   padding: var(--space-2) 0;
   color: var(--text-muted);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.header__mobile a:last-of-type {
+  border-bottom: none;
 }
 
 .header__mobile a.btn {
   color: #ffffff;
   padding: var(--space-4);
   margin-top: var(--space-2);
+  border-bottom: none;
 }
 
 /* Floating CTA */
@@ -161,12 +172,12 @@
   align-items: center;
   gap: var(--space-2);
   padding: var(--space-3) var(--space-5);
-  background: var(--gradient-accent);
+  background: var(--gradient-electric);
   color: #ffffff;
   font-weight: var(--fw-semibold);
   font-size: var(--fs-sm);
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-accent-strong);
+  box-shadow: 0 8px 32px rgba(58, 134, 255, 0.45);
   transition: all var(--transition-base);
 }
 
@@ -177,6 +188,7 @@
 
 .floating-cta:hover {
   transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(58, 134, 255, 0.6);
 }
 
 @media (max-width: 900px) {

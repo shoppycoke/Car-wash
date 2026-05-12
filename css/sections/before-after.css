@@ -3,18 +3,18 @@
   max-width: 1000px;
   margin: 0 auto;
   aspect-ratio: 16 / 9;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-img);
   overflow: hidden;
   user-select: none;
   cursor: ew-resize;
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  box-shadow: var(--shadow-xl), 0 0 60px rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(91, 192, 190, 0.22);
+  box-shadow: var(--shadow-xl), 0 0 60px rgba(91, 192, 190, 0.08);
   transition: border-color var(--transition-base), box-shadow var(--transition-base);
 }
 
 .ba__slider:hover {
-  border-color: rgba(59, 130, 246, 0.38);
-  box-shadow: var(--shadow-xl), 0 0 80px rgba(59, 130, 246, 0.12);
+  border-color: rgba(91, 192, 190, 0.4);
+  box-shadow: var(--shadow-xl), 0 0 80px rgba(91, 192, 190, 0.14);
 }
 
 .ba__img {
@@ -41,7 +41,7 @@
   right: 0;
   width: 40px;
   height: 100%;
-  background: linear-gradient(to left, rgba(59, 130, 246, 0.15), transparent);
+  background: linear-gradient(to left, rgba(91, 192, 190, 0.18), transparent);
   pointer-events: none;
   z-index: 1;
 }
@@ -59,7 +59,7 @@
   width: 3px;
   background: var(--accent);
   transform: translateX(-50%);
-  box-shadow: 0 0 24px var(--accent-glow);
+  box-shadow: 0 0 28px var(--accent-glow);
   cursor: ew-resize;
 }
 
@@ -76,7 +76,7 @@
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  box-shadow: var(--shadow-accent-strong);
+  box-shadow: 0 0 30px rgba(91, 192, 190, 0.45), var(--shadow-md);
   transition: transform var(--transition-base);
 }
 
@@ -86,23 +86,23 @@
 }
 
 .ba__slider:hover .ba__handle-circle {
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(1.12);
 }
 
 .ba__label {
   position: absolute;
   top: var(--space-5);
   padding: var(--space-2) var(--space-4);
-  background: rgba(17, 24, 39, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(11, 19, 43, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(244, 244, 244, 0.12);
   border-radius: var(--radius-full);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--text);
 }
 
 .ba__label--before {
@@ -112,7 +112,7 @@
 .ba__label--after {
   right: var(--space-5);
   color: var(--accent-light);
-  border-color: rgba(59, 130, 246, 0.35);
+  border-color: rgba(91, 192, 190, 0.35);
 }
 
 .ba__handle-line {

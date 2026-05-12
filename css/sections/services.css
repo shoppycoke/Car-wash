@@ -2,6 +2,18 @@
   position: relative;
 }
 
+.services::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse, rgba(58, 134, 255, 0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
 .services__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -11,9 +23,11 @@
 .service-card {
   position: relative;
   padding: var(--space-8);
-  background: var(--gradient-card), var(--bg-elev-1);
+  background: var(--gradient-glass);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   border: 1px solid var(--border-glass);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   transition: transform var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base);
   transform-style: preserve-3d;
   will-change: transform;
@@ -24,16 +38,17 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(59, 130, 246, 0.08), transparent 60%);
+  background: radial-gradient(circle at var(--mx, 50%) var(--my, 0%), rgba(91, 192, 190, 0.08), transparent 60%);
   opacity: 0;
   transition: opacity var(--transition-base);
   pointer-events: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
 }
 
 .service-card:hover {
-  border-color: var(--border-glass-strong);
-  box-shadow: var(--shadow-lg);
+  border-color: rgba(91, 192, 190, 0.3);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(91, 192, 190, 0.08);
+  transform: translateY(-4px);
 }
 
 .service-card:hover::before {
@@ -41,13 +56,14 @@
 }
 
 .service-card--featured {
-  background: linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, rgba(59, 130, 246, 0.02) 100%), var(--bg-elev-1);
-  border-color: rgba(59, 130, 246, 0.25);
+  background: linear-gradient(160deg, rgba(58, 134, 255, 0.12) 0%, rgba(28, 37, 65, 0.7) 100%);
+  border-color: rgba(58, 134, 255, 0.32);
+  box-shadow: var(--shadow-md), 0 0 30px rgba(58, 134, 255, 0.1);
 }
 
 .service-card--featured:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-accent);
+  border-color: var(--electric);
+  box-shadow: var(--shadow-lg), 0 0 50px rgba(58, 134, 255, 0.18);
 }
 
 .service-card__badge {
@@ -55,13 +71,14 @@
   top: var(--space-5);
   right: var(--space-5);
   padding: var(--space-1) var(--space-3);
-  background: var(--gradient-accent);
+  background: var(--gradient-electric);
   color: #ffffff;
   font-size: var(--fs-xs);
   font-weight: var(--fw-bold);
   border-radius: var(--radius-full);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(58, 134, 255, 0.4);
 }
 
 .service-card__header {
@@ -103,12 +120,12 @@
 
 .duration {
   padding: var(--space-1) var(--space-3);
-  background: var(--surface-glass);
-  border: 1px solid var(--border-glass);
+  background: rgba(91, 192, 190, 0.08);
+  border: 1px solid rgba(91, 192, 190, 0.2);
   border-radius: var(--radius-full);
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
-  color: var(--text-muted);
+  color: var(--accent);
 }
 
 .service-card__desc {
@@ -117,6 +134,7 @@
   margin-bottom: var(--space-6);
   position: relative;
   z-index: 1;
+  line-height: var(--lh-normal);
 }
 
 .service-card__features {
@@ -141,12 +159,12 @@
 
 .service-card__features li::before {
   content: '';
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
-  background: rgba(59, 130, 246, 0.08);
+  background: rgba(91, 192, 190, 0.1);
   border-radius: var(--radius-full);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233B82F6' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235BC0BE' stroke-width='2.5'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
   background-size: 12px;
   background-repeat: no-repeat;
   background-position: center;

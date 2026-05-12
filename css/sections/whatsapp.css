@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
   color: white;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 4px 24px rgba(37, 211, 102, 0.38);
   transition: all var(--transition-base);
   text-decoration: none;
 }
@@ -25,10 +25,10 @@
 
 .floating-whatsapp:hover {
   transform: translateY(-3px) scale(1.08);
-  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.55);
 }
 
-/* On mobile : move to left so it doesn't stack on the booking CTA */
+/* On mobile: move to left so it doesn't stack on the booking CTA */
 @media (max-width: 900px) {
   .floating-whatsapp {
     left: 16px;

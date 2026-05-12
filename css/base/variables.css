@@ -1,33 +1,42 @@
 :root {
-  /* ===== Colors ===== */
-  --bg: #FFFFFF;
-  --bg-elev-1: #F3F4F6;
-  --bg-elev-2: #E5E7EB;
-  --bg-elev-3: #D1D5DB;
+  /* ===== Colors — Dark Luxury Theme ===== */
+  --bg: #0B132B;
+  --bg-elev-1: #1C2541;
+  --bg-elev-2: #243058;
+  --bg-elev-3: #2d3b6e;
 
-  --surface-glass: rgba(255, 255, 255, 0.8);
-  --surface-glass-strong: rgba(255, 255, 255, 0.95);
-  --border-glass: rgba(17, 24, 39, 0.08);
-  --border-glass-strong: rgba(17, 24, 39, 0.16);
+  --surface-glass: rgba(28, 37, 65, 0.55);
+  --surface-glass-strong: rgba(28, 37, 65, 0.88);
+  --border-glass: rgba(91, 192, 190, 0.13);
+  --border-glass-strong: rgba(91, 192, 190, 0.28);
 
-  --text: #111827;
-  --text-muted: #6B7280;
-  --text-dim: #9CA3AF;
+  --text: #F4F4F4;
+  --text-muted: rgba(244, 244, 244, 0.62);
+  --text-dim: rgba(244, 244, 244, 0.38);
 
-  --accent: #3B82F6;
-  --accent-light: #60A5FA;
-  --accent-dark: #2563EB;
-  --accent-glow: rgba(59, 130, 246, 0.3);
+  --accent: #5BC0BE;
+  --accent-light: #7dd6d4;
+  --accent-dark: #3da5a3;
+  --accent-glow: rgba(91, 192, 190, 0.38);
 
-  --success: #22c55e;
-  --danger: #ef4444;
+  --electric: #3A86FF;
+  --electric-light: #6ba3ff;
+  --electric-dark: #1a6fff;
+  --electric-glow: rgba(58, 134, 255, 0.38);
+
+  --success: #4ade80;
+  --danger: #f87171;
 
   /* Gradients */
-  --gradient-accent: linear-gradient(135deg, #60A5FA 0%, #3B82F6 60%, #2563EB 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(243,244,246,0.7) 100%);
-  --gradient-card: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(243,244,246,0.6) 100%);
-  --gradient-hero: radial-gradient(ellipse at 30% 20%, rgba(59,130,246,0.1) 0%, transparent 55%),
-                   radial-gradient(ellipse at 70% 80%, rgba(59,130,246,0.06) 0%, transparent 55%);
+  --gradient-accent: linear-gradient(135deg, #5BC0BE 0%, #3A86FF 100%);
+  --gradient-accent-rev: linear-gradient(135deg, #3A86FF 0%, #5BC0BE 100%);
+  --gradient-electric: linear-gradient(135deg, #3A86FF 0%, #1a6fff 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(28,37,65,0.72) 0%, rgba(11,19,43,0.55) 100%);
+  --gradient-card: linear-gradient(160deg, rgba(36,48,88,0.48) 0%, rgba(11,19,43,0.28) 100%);
+  --gradient-hero:
+    radial-gradient(ellipse at 22% 18%, rgba(91,192,190,0.18) 0%, transparent 52%),
+    radial-gradient(ellipse at 78% 82%, rgba(58,134,255,0.15) 0%, transparent 52%),
+    radial-gradient(ellipse at 55% 35%, rgba(58,134,255,0.07) 0%, transparent 45%);
 
   /* ===== Typography ===== */
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -71,21 +80,26 @@
   --space-24: 6rem;
   --space-32: 8rem;
 
-  /* ===== Radius ===== */
+  /* ===== Radius — Style Apple premium ===== */
   --radius-xs: 8px;
   --radius-sm: 12px;
-  --radius-md: 20px;
+  --radius-md: 24px;
+  --radius-btn: 18px;
+  --radius-input: 16px;
+  --radius-img: 28px;
   --radius-lg: 32px;
   --radius-xl: 48px;
   --radius-full: 9999px;
 
-  /* ===== Shadows (adaptées au fond clair) ===== */
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.09);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.11);
-  --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.14);
-  --shadow-accent: 0 10px 40px rgba(59, 130, 246, 0.2);
-  --shadow-accent-strong: 0 14px 50px rgba(59, 130, 246, 0.3);
+  /* ===== Shadows — Dark theme ===== */
+  --shadow-sm:  0 2px 12px rgba(0, 0, 0, 0.38);
+  --shadow-md:  0 8px 28px rgba(0, 0, 0, 0.48);
+  --shadow-lg:  0 20px 60px rgba(0, 0, 0, 0.58);
+  --shadow-xl:  0 30px 90px rgba(0, 0, 0, 0.68);
+  --shadow-accent:        0 10px 40px rgba(91, 192, 190, 0.22);
+  --shadow-accent-strong: 0 14px 50px rgba(58, 134, 255, 0.32);
+  --shadow-glow-cyan:     0 0 40px rgba(91, 192, 190, 0.28);
+  --shadow-glow-blue:     0 0 40px rgba(58, 134, 255, 0.28);
 
   /* ===== Layout ===== */
   --container-max: 1280px;

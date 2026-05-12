@@ -9,6 +9,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color-scheme: dark;
 }
 
 body {
@@ -60,8 +61,8 @@ ul, ol {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg);
@@ -69,6 +70,7 @@ ul, ol {
 ::-webkit-scrollbar-thumb {
   background: var(--bg-elev-3);
   border-radius: var(--radius-full);
+  border: 2px solid var(--bg);
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-dark);
@@ -86,6 +88,14 @@ ul, ol {
 section {
   position: relative;
   padding: var(--space-24) 0;
+}
+
+/* Alternating section backgrounds */
+.services,
+.gallery,
+.about,
+.faq {
+  background: var(--bg-elev-1);
 }
 
 @media (max-width: 768px) {
