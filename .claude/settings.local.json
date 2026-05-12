@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "PowerShell(Get-Item *)",
-      "PowerShell(Start-Process \"E:\\\\sitedtl\\\\index.html\")"
+      "PowerShell(Start-Process \"E:\\\\sitedtl\\\\index.html\")",
+      "PowerShell(New-Item *)"
     ]
   }
 }
