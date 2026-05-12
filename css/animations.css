@@ -318,8 +318,10 @@
   50%       { transform: translateY(7px); }
 }
 
-@media (max-width: 768px) {
-  .scroll-next-wrap { bottom: 4.5rem; }
+@media (max-width: 900px) {
+  .scroll-next-wrap {
+    bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 16px);
+  }
   .scroll-next { width: 40px; height: 40px; }
   .scroll-next svg { width: 16px; height: 16px; }
 }

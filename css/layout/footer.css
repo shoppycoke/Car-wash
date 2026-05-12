@@ -137,10 +137,17 @@
 }
 
 @media (max-width: 900px) {
+  .footer {
+    height: auto;
+    min-height: 100svh;
+    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
+  }
+
   .footer__inner {
     grid-template-columns: 1fr 1fr;
     gap: var(--space-8);
   }
+
   .footer__brand {
     grid-column: 1 / -1;
   }

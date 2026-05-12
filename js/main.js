@@ -27,4 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Footer year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Mobile bar — slide-up après le page loader (900ms minimum)
+  const mobileBar = document.getElementById('mobileBar');
+  if (mobileBar) {
+    setTimeout(() => mobileBar.classList.add('is-visible'), 1050);
+  }
 });
