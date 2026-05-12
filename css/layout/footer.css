@@ -3,11 +3,8 @@
   border-top: 1px solid var(--border-glass);
   position: relative;
   overflow: hidden;
-  height: 100vh;
-  height: 100svh;
-  display: flex;
-  flex-direction: column;
-  padding-top: var(--space-16);
+  padding-top: var(--space-12);
+  scroll-snap-align: start;
 }
 
 .footer::before {
@@ -16,17 +13,17 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;
-  height: 2px;
+  width: 480px;
+  height: 1px;
   background: var(--gradient-accent);
-  opacity: 0.35;
+  opacity: 0.4;
 }
 
 .footer__inner {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: var(--space-12);
-  padding-bottom: var(--space-12);
+  gap: var(--space-8);
+  padding-bottom: var(--space-8);
 }
 
 .footer__logo {
@@ -35,8 +32,8 @@
   gap: var(--space-3);
   font-family: var(--font-display);
   font-weight: var(--fw-bold);
-  font-size: var(--fs-md);
-  margin-bottom: var(--space-4);
+  font-size: var(--fs-base);
+  margin-bottom: var(--space-3);
   color: var(--text);
   transition: opacity var(--transition-fast);
 }
@@ -44,33 +41,33 @@
 .footer__logo:hover { opacity: 0.8; }
 
 .footer__logo img {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-sm);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs);
 }
 
 .footer__brand p {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   color: var(--text-dim);
-  max-width: 320px;
-  line-height: var(--lh-normal);
+  max-width: 280px;
+  line-height: 1.55;
 }
 
 .footer__col h4 {
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: var(--accent);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
 }
 
 .footer__col a,
 .footer__col span {
   display: block;
-  font-size: var(--fs-sm);
+  font-size: var(--fs-xs);
   color: var(--text-dim);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-2);
   transition: color var(--transition-fast);
 }
 
@@ -80,19 +77,19 @@
 
 .footer__socials {
   display: flex;
-  gap: var(--space-3);
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 
 .footer__socials a {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(28, 37, 65, 0.8);
+  background: rgba(28, 37, 65, 0.7);
   border: 1px solid var(--border-glass);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-xs);
   margin-bottom: 0;
   transition: all var(--transition-fast);
   color: var(--text-dim);
@@ -102,19 +99,18 @@
   border-color: var(--accent);
   color: var(--accent);
   background: rgba(91, 192, 190, 0.08);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(91, 192, 190, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(91, 192, 190, 0.15);
 }
 
 .footer__socials svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .footer__bottom {
   border-top: 1px solid var(--border-glass);
-  padding: var(--space-6) 0;
-  margin-top: auto;
+  padding: var(--space-4) 0;
 }
 
 .footer__bottom .container {
@@ -122,13 +118,13 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: var(--space-4);
+  gap: var(--space-3);
   font-size: var(--fs-xs);
   color: var(--text-dim);
 }
 
 .footer__bottom a {
-  margin-left: var(--space-5);
+  margin-left: var(--space-4);
   transition: color var(--transition-fast);
 }
 
@@ -138,14 +134,14 @@
 
 @media (max-width: 900px) {
   .footer {
-    height: auto;
-    min-height: 100svh;
+    padding-top: var(--space-10);
     padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px));
   }
 
   .footer__inner {
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-8);
+    gap: var(--space-6);
+    padding-bottom: var(--space-6);
   }
 
   .footer__brand {
@@ -154,14 +150,21 @@
 }
 
 @media (max-width: 540px) {
+  .footer {
+    padding-top: var(--space-8);
+  }
+
   .footer__inner {
     grid-template-columns: 1fr;
+    gap: var(--space-5);
   }
+
   .footer__bottom .container {
     flex-direction: column;
     text-align: center;
   }
-  .footer__bottom a:first-of-type {
+
+  .footer__bottom a {
     margin-left: 0;
   }
 }

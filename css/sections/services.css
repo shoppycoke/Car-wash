@@ -118,16 +118,6 @@
   color: var(--text-muted);
 }
 
-.duration {
-  padding: var(--space-1) var(--space-3);
-  background: rgba(91, 192, 190, 0.08);
-  border: 1px solid rgba(91, 192, 190, 0.2);
-  border-radius: var(--radius-full);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  color: var(--accent);
-}
-
 .service-card__desc {
   font-size: var(--fs-sm);
   color: var(--text-muted);
