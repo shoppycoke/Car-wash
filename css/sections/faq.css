@@ -8,7 +8,23 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  /* Scrollable if content exceeds fullscreen section height */
+  max-height: calc(100svh - var(--header-height) - var(--space-10) - 140px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  padding-right: var(--space-2);
+  scrollbar-width: thin;
+  scrollbar-color: var(--bg-elev-3) transparent;
 }
+
+.faq__list::-webkit-scrollbar { width: 4px; }
+.faq__list::-webkit-scrollbar-track { background: transparent; }
+.faq__list::-webkit-scrollbar-thumb {
+  background: var(--bg-elev-3);
+  border-radius: var(--radius-full);
+}
+.faq__list::-webkit-scrollbar-thumb:hover { background: var(--accent-dark); }
 
 .faq__item {
   background: var(--gradient-glass);
