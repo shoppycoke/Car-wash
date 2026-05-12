@@ -199,11 +199,18 @@ Services (3 cartes), Booking (Calendly), Reviews (6 cartes), Gallery dépassent 
 
 ---
 
+## Identité — déjà renseignée
+
+| Élément | Valeur |
+|---|---|
+| Nom | **Dracarys Auto** |
+| Logo | `assets/images/logo.png` (PNG 1080×1080, dragon + voiture, fond noir) |
+| Favicon | `<link rel="icon" type="image/png" href="assets/images/logo.png">` |
+
 ## Ce qui reste à personnaliser (placeholders)
 
 | Placeholder | Emplacement |
 |---|---|
-| `NOM_ENTREPRISE` | `index.html` — titre, header, footer, schema.org, OG |
 | `+33600000000` | `index.html` — mobile-bar, zone, footer WhatsApp |
 | `LIEN_CALENDLY` | `index.html` — `data-url` du widget Calendly |
 | `LIEN_GOOGLE` | `index.html` — liens avis Google dans reviews |
@@ -211,4 +218,3 @@ Services (3 cartes), Booking (Calendly), Reviews (6 cartes), Gallery dépassent 
 | `votre-domaine.fr` | `index.html` — meta canonical, OG url, schema.org |
 | `hero-bg.jpg` | `assets/images/` — photo hero (LCP, preload déjà en place) |
 | `before-1.jpg` / `after-1.jpg` | `assets/images/before-after/` |
-| `logo.svg` | `assets/images/` |
