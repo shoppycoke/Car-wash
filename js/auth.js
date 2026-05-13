@@ -3,200 +3,117 @@
 
   const { createClient } = supabase;
   const sb = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY, {
-    auth: {
-      flowType: 'pkce',
-      detectSessionInUrl: true,
-      persistSession: true,
-      autoRefreshToken: true,
-    }
+    auth: { flowType: 'pkce', persistSession: true, autoRefreshToken: true }
   });
 
-  // ── DOM ───────────────────────────────────────────────────
-  const loginForm           = document.getElementById('loginForm');
-  const registerForm        = document.getElementById('registerForm');
-  const tabs                = document.querySelectorAll('.auth-tab');
-  const alertEl             = document.getElementById('authAlert');
-  const loginBtn            = document.getElementById('loginBtn');
-  const magicLinkBtn        = document.getElementById('magicLinkBtn');
-  const loginPasswordField  = document.getElementById('loginPasswordField');
-  const magicLinkInfo       = document.getElementById('magicLinkInfo');
-  const toggleMagicLink     = document.getElementById('toggleMagicLink');
-  const togglePasswordLogin = document.getElementById('togglePasswordLogin');
-
-  let useMagicLink = false;
+  const form        = document.getElementById('lnForm');
+  const emailInput  = document.getElementById('lnEmail');
+  const pwdInput    = document.getElementById('lnPassword');
+  const submitBtn   = document.getElementById('lnSubmit');
+  const alertEl     = document.getElementById('lnAlert');
+  const togglePwd   = document.getElementById('lnTogglePwd');
+  const eyeOpen     = document.getElementById('lnEyeOpen');
+  const eyeClosed   = document.getElementById('lnEyeClosed');
+  const forgotBtn   = document.getElementById('lnForgot');
+  const modal       = document.getElementById('lnModal');
+  const modalBg     = document.getElementById('lnModalBg');
+  const modalClose  = document.getElementById('lnModalClose');
+  const modalAlert  = document.getElementById('lnModalAlert');
+  const forgotEmail = document.getElementById('lnForgotEmail');
+  const forgotSub   = document.getElementById('lnForgotSubmit');
 
   // ── Helpers ───────────────────────────────────────────────
-  function showAlert(msg, type = 'error') {
-    alertEl.textContent = msg;
-    alertEl.className = `auth-alert auth-alert--${type}`;
-    alertEl.hidden = false;
+  function showAlert(el, msg, type = 'error') {
+    el.textContent = msg;
+    el.className = `ln-alert ln-alert--${type}`;
+    el.hidden = false;
   }
 
-  function hideAlert() { alertEl.hidden = true; }
-
-  function setLoading(btn, loading) {
-    btn.disabled = loading;
-    if (loading) {
-      btn.dataset.txt  = btn.textContent;
-      btn.textContent  = 'Chargement…';
-    } else {
-      btn.textContent  = btn.dataset.txt || btn.textContent;
-    }
+  function setLoading(btn, on) {
+    btn.disabled = on;
+    btn.classList.toggle('is-loading', on);
   }
 
   function translateError(msg) {
     if (/Invalid login credentials/i.test(msg))  return 'E-mail ou mot de passe incorrect.';
     if (/Email not confirmed/i.test(msg))         return 'Confirmez votre e-mail avant de vous connecter.';
-    if (/User already registered/i.test(msg))     return 'Un compte existe déjà avec cet e-mail.';
-    if (/Password should be/i.test(msg))          return 'Le mot de passe doit contenir au moins 8 caractères.';
     if (/rate limit/i.test(msg))                  return 'Trop de tentatives. Réessayez dans quelques minutes.';
     if (/Unable to validate/i.test(msg))          return 'E-mail ou mot de passe incorrect.';
     return msg;
   }
 
-  // ── Onglets ───────────────────────────────────────────────
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => {
-        t.classList.remove('is-active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      tab.classList.add('is-active');
-      tab.setAttribute('aria-selected', 'true');
-      hideAlert();
-      const target = tab.dataset.tab;
-      loginForm.hidden    = target !== 'login';
-      registerForm.hidden = target !== 'register';
-    });
+  // ── Show / hide password ──────────────────────────────────
+  togglePwd.addEventListener('click', () => {
+    const isText = pwdInput.type === 'text';
+    pwdInput.type = isText ? 'password' : 'text';
+    eyeOpen.hidden   = !isText;
+    eyeClosed.hidden = isText;
+    togglePwd.setAttribute('aria-label', isText ? 'Afficher le mot de passe' : 'Masquer le mot de passe');
   });
 
-  // ── Bascule lien magique / mot de passe ──────────────────
-  toggleMagicLink?.addEventListener('click', () => {
-    useMagicLink = true;
-    loginPasswordField.hidden = true;
-    magicLinkInfo.hidden      = false;
-    loginBtn.hidden           = true;
-    magicLinkBtn.hidden       = false;
-    hideAlert();
-  });
-
-  togglePasswordLogin?.addEventListener('click', () => {
-    useMagicLink = false;
-    loginPasswordField.hidden = false;
-    magicLinkInfo.hidden      = true;
-    loginBtn.hidden           = false;
-    magicLinkBtn.hidden       = true;
-    hideAlert();
-  });
-
-  // ── Gestion de l'état d'authentification ─────────────────
-  // Redirige vers le dashboard dès qu'une session s'ouvre
+  // ── Auth state → redirect on sign-in ─────────────────────
   sb.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_IN' && session) {
       window.location.replace('dashboard.html');
     }
   });
 
-  // ── Connexion par mot de passe ────────────────────────────
-  loginForm.addEventListener('submit', async e => {
+  // ── Login form ────────────────────────────────────────────
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     e.stopPropagation();
-    hideAlert();
+    alertEl.hidden = true;
 
-    const email    = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
+    const email = emailInput.value.trim();
+    const pwd   = pwdInput.value;
 
-    if (!email)    { showAlert('Veuillez saisir votre e-mail.'); return; }
-    if (!password) { showAlert('Veuillez saisir votre mot de passe.'); return; }
+    if (!email) { showAlert(alertEl, 'Veuillez saisir votre adresse e-mail.'); return; }
+    if (!pwd)   { showAlert(alertEl, 'Veuillez saisir votre mot de passe.'); return; }
 
-    setLoading(loginBtn, true);
-    const { error } = await sb.auth.signInWithPassword({ email, password });
-    setLoading(loginBtn, false);
+    setLoading(submitBtn, true);
+    const { error } = await sb.auth.signInWithPassword({ email, password: pwd });
+    setLoading(submitBtn, false);
+
+    if (error) showAlert(alertEl, translateError(error.message));
+    // La redirection est gérée par onAuthStateChange
+  });
+
+  // ── Forgot password modal ─────────────────────────────────
+  function openModal() {
+    modal.hidden = false;
+    forgotEmail.value = emailInput.value;
+    modalAlert.hidden = true;
+    requestAnimationFrame(() => forgotEmail.focus());
+  }
+
+  function closeModal() { modal.hidden = true; }
+
+  forgotBtn.addEventListener('click', openModal);
+  modalBg.addEventListener('click', closeModal);
+  modalClose.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+
+  forgotSub.addEventListener('click', async () => {
+    const email = forgotEmail.value.trim();
+    if (!email) { showAlert(modalAlert, 'Veuillez saisir votre adresse e-mail.'); return; }
+
+    setLoading(forgotSub, true);
+    const { error } = await sb.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/auth.html'
+    });
+    setLoading(forgotSub, false);
 
     if (error) {
-      showAlert(translateError(error.message));
+      showAlert(modalAlert, error.message);
+    } else {
+      showAlert(modalAlert, 'Lien envoyé ! Vérifiez votre boîte e-mail.', 'success');
+      setTimeout(closeModal, 3000);
     }
-    // La redirection est gérée par onAuthStateChange (SIGNED_IN)
   });
 
-  // ── Connexion par lien magique ────────────────────────────
-  magicLinkBtn.addEventListener('click', async () => {
-    const email = document.getElementById('loginEmail').value.trim();
-    if (!email) { showAlert('Veuillez saisir votre e-mail.'); return; }
-
-    setLoading(magicLinkBtn, true);
-    const { error } = await sb.auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: window.location.origin + '/dashboard.html' }
-    });
-    setLoading(magicLinkBtn, false);
-
-    if (error) { showAlert(translateError(error.message)); return; }
-    showAlert('Lien envoyé ! Vérifiez votre boîte e-mail.', 'success');
-  });
-
-  // ── Inscription ───────────────────────────────────────────
-  registerForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    e.stopPropagation();
-    hideAlert();
-
-    const fullName = document.getElementById('regFullName').value.trim();
-    const email    = document.getElementById('regEmail').value.trim();
-    const phone    = document.getElementById('regPhone').value.trim();
-    const password = document.getElementById('regPassword').value;
-    const codeRef  = document.getElementById('regCode').value.trim().toUpperCase();
-    const rgpd     = document.getElementById('regRgpd').checked;
-
-    if (!fullName)            { showAlert('Veuillez saisir votre nom complet.'); return; }
-    if (!email)               { showAlert('Veuillez saisir votre e-mail.'); return; }
-    if (password.length < 8)  { showAlert('Le mot de passe doit contenir au moins 8 caractères.'); return; }
-    if (!rgpd)                { showAlert('Vous devez accepter la politique de confidentialité.'); return; }
-
-    const regBtn = document.getElementById('registerBtn');
-    setLoading(regBtn, true);
-
-    // Valide le code de parrainage via RPC (security definer — fonctionne sans session)
-    if (codeRef) {
-      const { data: codeValid, error: rpcErr } = await sb.rpc('check_referral_code', { code: codeRef });
-      if (rpcErr || !codeValid) {
-        setLoading(regBtn, false);
-        showAlert('Code de parrainage invalide.');
-        return;
-      }
-    }
-
-    // Inscription — toutes les données passent en metadata,
-    // le trigger handle_new_user() crée le profil et le parrainage côté serveur
-    const { data, error } = await sb.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name:   fullName,
-          phone:       phone   || null,
-          referred_by: codeRef || null,
-        }
-      }
-    });
-
-    setLoading(regBtn, false);
-
-    if (error) {
-      showAlert(translateError(error.message));
-      return;
-    }
-
-    // Pas de session → confirmation e-mail requise dans Supabase
-    if (!data.session) {
-      showAlert('Inscription réussie ! Vérifiez votre e-mail pour confirmer votre compte.', 'success');
-      return;
-    }
-
-    // Session présente → onAuthStateChange gère la redirection
-  });
-
-  // ── Redirection si déjà connecté ─────────────────────────
+  // ── Session check ─────────────────────────────────────────
   sb.auth.getSession().then(({ data: { session } }) => {
     if (session) window.location.replace('dashboard.html');
   });
