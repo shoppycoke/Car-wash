@@ -458,15 +458,24 @@
     gap: var(--space-8);
   }
 
+  /* Radar pleine largeur sur mobile — max-width large pour ne pas brider */
   .zone__radar-wrap {
-    max-width: 360px;
+    width: 100%;
+    max-width: 440px;
     margin: 0 auto;
   }
 
-  /* Labels redondants sur mobile : la sidebar les explique déjà */
-  .zone__ring-lbl {
-    display: none;
-  }
+  .zone__ring-lbl { display: none; }
+}
+
+/* Noms de villes trop petits et trop denses sur petit radar — on les masque */
+@media (max-width: 600px) {
+  .zone__pin-name { display: none; }
+  .zone__pin-dot  { width: 7px; height: 7px; }
+
+  /* Rings plus visibles à petite taille */
+  .zone__ring--1 { border-width: 1.5px; border-color: rgba(91, 192, 190, 0.45); }
+  .zone__ring--2 { border-width: 1.5px; border-color: rgba(91, 192, 190, 0.22); }
 }
 
 @media (max-width: 768px) {
@@ -477,7 +486,7 @@
 
   .zone__kpis {
     padding: var(--space-4) var(--space-6);
-    margin-bottom: var(--space-10);
+    margin-bottom: var(--space-8);
   }
 
   .zone__kpi-val { font-size: var(--fs-xl); }
@@ -485,8 +494,6 @@
 }
 
 @media (max-width: 480px) {
-  .zone__radar-wrap { max-width: 290px; }
-
   .zone__kpis { padding: var(--space-4) var(--space-4); }
   .zone__kpi-div { margin: 0 var(--space-3); height: 28px; }
   .zone__kpi-label { font-size: 0.58rem; }
@@ -496,9 +503,7 @@
 }
 
 @media (max-width: 360px) {
-  .zone__radar-wrap { max-width: 260px; }
-
-  .zone__kpis { padding: var(--space-3) var(--space-3); gap: 0; }
+  .zone__kpis { padding: var(--space-3) var(--space-3); }
   .zone__kpi-val { font-size: var(--fs-lg); }
   .zone__kpi-div { margin: 0 var(--space-2); height: 24px; }
 }
