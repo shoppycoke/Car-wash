@@ -688,12 +688,11 @@
           <p class="section-subtitle">Confirmation immédiate par SMS et email.<br>Annulation gratuite jusqu'à 24h avant.</p>
         </div>
 
-        <div class="booking__wrap animate-on-scroll anim-scale">
-          <!-- REMPLACER : LIEN_CALENDLY (data-url) -->
+        <div class="booking__wrap animate-on-scroll anim-scale" id="bookingWrap">
+          <!-- REMPLACER : LIEN_CALENDLY par votre URL Calendly (ex: https://calendly.com/votre-nom/detailing) -->
           <div class="calendly-inline-widget"
                data-url="LIEN_CALENDLY"
                style="min-width:320px;height:720px;"></div>
-          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
         </div>
 
         <!-- Fallback si Calendly non configuré -->
@@ -903,17 +902,37 @@
   <!-- JS -->
   <script type="module" src="js/main.js"></script>
 
-  <!-- Fallback Calendly : affiche alternative si widget vide après 4s -->
+  <!-- Calendly : ne charge le script que si l'URL est configurée -->
   <script>
-    setTimeout(function () {
-      var widget = document.querySelector('.calendly-inline-widget');
+    (function () {
+      var widget   = document.querySelector('.calendly-inline-widget');
+      var wrap     = document.getElementById('bookingWrap');
       var fallback = document.getElementById('bookingFallback');
       if (!widget || !fallback) return;
-      if (!widget.querySelector('iframe')) {
-        widget.style.display = 'none';
+
+      var url = widget.getAttribute('data-url') || '';
+      var isConfigured = url.length > 0 && url !== 'LIEN_CALENDLY' && url.indexOf('http') === 0;
+
+      if (!isConfigured) {
+        // URL non configurée : affiche le fallback immédiatement, sans appel réseau
+        if (wrap) wrap.style.display = 'none';
         fallback.style.display = 'block';
+        return;
       }
-    }, 4000);
+
+      // URL configurée : charge le script Calendly puis vérifie l'iframe après 4s
+      var s = document.createElement('script');
+      s.src   = 'https://assets.calendly.com/assets/external/widget.js';
+      s.async = true;
+      document.body.appendChild(s);
+
+      setTimeout(function () {
+        if (!widget.querySelector('iframe')) {
+          if (wrap) wrap.style.display = 'none';
+          fallback.style.display = 'block';
+        }
+      }, 4000);
+    })();
   </script>
 
 </body>
