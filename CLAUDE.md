@@ -202,7 +202,7 @@ Services (3 cartes), Booking (Calendly), Reviews (6 cartes), Gallery dépassent 
 
 | Élément | Valeur |
 |---|---|
-| Nom | **Dracarys Auto** |
+| Nom | **Clairys Auto** |
 | Logo | `assets/images/logo.png` (PNG 1080×1080, dragon + voiture, fond noir) |
 | Favicon | `<link rel="icon" type="image/png" href="assets/images/logo.png">` |
 
