@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -109,6 +109,7 @@
 
       <nav class="header__nav" aria-label="Navigation principale">
         <a href="#services">Prestations</a>
+        <a href="#zone">Zone</a>
         <a href="#before-after">Avant / Après</a>
         <a href="#reviews">Avis</a>
       </nav>
@@ -123,10 +124,10 @@
     <!-- Mobile menu -->
     <div class="header__mobile" id="mobileMenu">
       <a href="#services">Prestations</a>
+      <a href="#zone">Zone d'intervention</a>
       <a href="#before-after">Avant / Après</a>
       <a href="#reviews">Avis</a>
       <a href="#faq">FAQ</a>
-      <a href="#zone">Zone d'intervention</a>
       <a href="#booking" class="btn btn--accent">Réserver maintenant</a>
     </div>
   </header>
@@ -135,11 +136,11 @@
   <nav class="scroll-nav" id="scrollNav" aria-label="Navigation sections">
     <button class="scroll-nav__dot is-active" data-target="hero"         title="Accueil"></button>
     <button class="scroll-nav__dot"           data-target="services"     title="Prestations"></button>
-    <button class="scroll-nav__dot"           data-target="before-after" title="Avant / Après"></button>
-    <button class="scroll-nav__dot"           data-target="gallery"      title="Galerie"></button>
-    <button class="scroll-nav__dot"           data-target="reviews"      title="Avis"></button>
     <button class="scroll-nav__dot"           data-target="zone"         title="Zone"></button>
+    <button class="scroll-nav__dot"           data-target="before-after" title="Avant / Après"></button>
+    <button class="scroll-nav__dot"           data-target="gallery"      title="Réalisations"></button>
     <button class="scroll-nav__dot"           data-target="booking"      title="Réserver"></button>
+    <button class="scroll-nav__dot"           data-target="reviews"      title="Avis"></button>
     <button class="scroll-nav__dot"           data-target="faq"          title="FAQ"></button>
   </nav>
 
@@ -264,182 +265,6 @@
         </div>
       </div>
     </section>
-
-    <!-- ============ BEFORE / AFTER ============ -->
-    <section class="ba" id="before-after">
-      <div class="container">
-        <div class="section-head animate-on-scroll anim-blur">
-          <span class="section-eyebrow">Le résultat parle</span>
-          <h2 class="section-title">Avant <span class="text-accent">/</span> Après</h2>
-        </div>
-
-        <div class="ba__slider animate-on-scroll" id="baSlider">
-          <!-- REMPLACER : assets/images/before-after/before-1.jpg + after-1.jpg -->
-          <img src="assets/images/before-after/after-1.jpg" alt="Intérieur véhicule après detailing" class="ba__img ba__img--after" width="1000" height="563" loading="lazy" />
-          <div class="ba__before-wrap">
-            <img src="assets/images/before-after/before-1.jpg" alt="Intérieur véhicule avant detailing" class="ba__img ba__img--before" width="1000" height="563" loading="lazy" />
-          </div>
-          <div class="ba__handle" id="baHandle">
-            <div class="ba__handle-line"></div>
-            <div class="ba__handle-circle">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg>
-            </div>
-          </div>
-          <span class="ba__label ba__label--before">Avant</span>
-          <span class="ba__label ba__label--after">Après</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ GALLERY ============ -->
-    <section class="gallery" id="gallery">
-      <div class="container">
-        <div class="section-head animate-on-scroll anim-blur">
-          <span class="section-eyebrow">Nos réalisations</span>
-          <h2 class="section-title">Le résultat en <span class="text-accent">images</span></h2>
-        </div>
-
-        <div class="gallery__grid">
-          <div class="gallery__card animate-on-scroll">
-            <img src="assets/images/before-after/after-1.jpg" alt="Sièges tissu après detailing" loading="lazy" width="400" height="300" />
-            <span class="gallery__label gallery__label--accent">Sièges tissu</span>
-          </div>
-
-          <div class="gallery__card animate-on-scroll">
-            <img src="assets/images/before-after/before-1.jpg" alt="État avant detailing" loading="lazy" width="400" height="300" />
-            <span class="gallery__label">Avant intervention</span>
-          </div>
-
-          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
-            <div class="gallery__placeholder-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
-            </div>
-            <span class="gallery__placeholder-label">Tapis &amp; Moquettes</span>
-            <span class="gallery__placeholder-sub">Photo à venir</span>
-          </div>
-
-          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
-            <div class="gallery__placeholder-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
-            </div>
-            <span class="gallery__placeholder-label">Tableau de bord</span>
-            <span class="gallery__placeholder-sub">Photo à venir</span>
-          </div>
-
-          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
-            <div class="gallery__placeholder-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
-            </div>
-            <span class="gallery__placeholder-label">Cuirs &amp; Plastiques</span>
-            <span class="gallery__placeholder-sub">Photo à venir</span>
-          </div>
-
-          <!-- REMPLACER : URL Instagram -->
-          <a href="#" target="_blank" rel="noopener" class="gallery__card gallery__card--insta animate-on-scroll" aria-label="Voir notre portfolio sur Instagram">
-            <div class="gallery__insta-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
-            </div>
-            <span class="gallery__insta-text">Voir toutes<br>nos réalisations</span>
-            <span class="gallery__insta-sub">@nom_instagram</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ REVIEWS ============ -->
-    <section class="reviews" id="reviews">
-      <div class="container">
-        <div class="section-head animate-on-scroll anim-blur">
-          <span class="section-eyebrow">Avis vérifiés Google</span>
-          <h2 class="section-title">Ils nous ont fait <span class="text-accent">confiance</span></h2>
-        </div>
-
-        <div class="reviews__rating animate-on-scroll">
-          <div class="reviews__score">
-            <div class="reviews__score-number">4.9</div>
-            <div class="reviews__stars" aria-label="4.9 étoiles sur 5">
-              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
-            </div>
-            <div class="reviews__score-text">Basé sur <strong>487 avis Google</strong></div>
-          </div>
-          <!-- REMPLACER : LIEN_GOOGLE -->
-          <a href="LIEN_GOOGLE" target="_blank" rel="noopener" class="btn btn--outline">
-            Voir tous les avis
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
-          </a>
-        </div>
-
-        <div class="reviews__grid">
-          <article class="review-card animate-on-scroll">
-            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
-            <p class="review-card__text">"Travail irréprochable. Ma voiture est comme neuve, jusque dans les moindres recoins. Je recommande à 100%."</p>
-            <div class="review-card__author">
-              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(59,130,246,0.18)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#3B82F6">TL</text></svg>
-              <div><strong>Thomas L.</strong><span>Il y a 2 semaines</span></div>
-            </div>
-          </article>
-
-          <article class="review-card animate-on-scroll">
-            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
-            <p class="review-card__text">"Service ultra pro, ponctuel et soigné. Le résultat dépasse mes attentes. Je reviendrai sans hésiter."</p>
-            <div class="review-card__author">
-              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(99,179,237,0.18)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#63B3ED">SM</text></svg>
-              <div><strong>Sarah M.</strong><span>Il y a 1 mois</span></div>
-            </div>
-          </article>
-
-          <article class="review-card animate-on-scroll">
-            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
-            <p class="review-card__text">"Un travail d'orfèvre. Les taches que je pensais incrustées ont disparu. Rapport qualité/prix imbattable."</p>
-            <div class="review-card__author">
-              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(74,222,128,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#4ade80">KB</text></svg>
-              <div><strong>Karim B.</strong><span>Il y a 3 semaines</span></div>
-            </div>
-          </article>
-
-          <article class="review-card animate-on-scroll">
-            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
-            <p class="review-card__text">"J'avais des taches de café sur les sièges depuis des mois. Tout a disparu. Résultat bluffant, je n'aurais pas cru c'était possible."</p>
-            <div class="review-card__author">
-              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(248,113,113,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#F87171">MR</text></svg>
-              <div><strong>Marie R.</strong><span>Il y a 5 jours</span></div>
-            </div>
-          </article>
-
-          <article class="review-card animate-on-scroll">
-            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
-            <p class="review-card__text">"Ponctuel, soigneux et vraiment passionné par son métier. On sent la différence avec les laveries classiques. Ma BMW n'a jamais été aussi propre."</p>
-            <div class="review-card__author">
-              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(167,139,250,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#A78BFA">LP</text></svg>
-              <div><strong>Lucas P.</strong><span>Il y a 2 semaines</span></div>
-            </div>
-          </article>
-
-          <article class="review-card animate-on-scroll">
-            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
-            <p class="review-card__text">"Formule Complet prise pour mon van après un road trip. C'est propre, ça sent bon, et chaque recoin a été traité. Je recommande les yeux fermés."</p>
-            <div class="review-card__author">
-              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(251,191,36,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#FBBF24">AD</text></svg>
-              <div><strong>Amélie D.</strong><span>Il y a 3 jours</span></div>
-            </div>
-          </article>
-        </div>
-
-        <div class="reviews__banner animate-on-scroll">
-          <div class="reviews__banner-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          </div>
-          <div class="reviews__banner-content">
-            <strong>Laissez un avis Google après votre prestation</strong>
-            <span>= <span class="text-accent">5 €</span> de remise sur votre prochaine réservation</span>
-          </div>
-          <!-- REMPLACER : LIEN_GOOGLE -->
-          <a href="LIEN_GOOGLE" target="_blank" rel="noopener" class="btn btn--accent">Laisser un avis</a>
-        </div>
-      </div>
-    </section>
-
-
 
     <!-- ============ ZONE D'INTERVENTION ============ -->
     <section class="zone" id="zone">
@@ -591,6 +416,87 @@
       </div>
     </section>
 
+    <!-- ============ BEFORE / AFTER ============ -->
+    <section class="ba" id="before-after">
+      <div class="container">
+        <div class="section-head animate-on-scroll anim-blur">
+          <span class="section-eyebrow">Le résultat parle</span>
+          <h2 class="section-title">Avant <span class="text-accent">/</span> Après</h2>
+        </div>
+
+        <div class="ba__slider animate-on-scroll" id="baSlider">
+          <!-- REMPLACER : assets/images/before-after/before-1.jpg + after-1.jpg -->
+          <img src="assets/images/before-after/after-1.jpg" alt="Intérieur véhicule après detailing" class="ba__img ba__img--after" width="1000" height="563" loading="lazy" />
+          <div class="ba__before-wrap">
+            <img src="assets/images/before-after/before-1.jpg" alt="Intérieur véhicule avant detailing" class="ba__img ba__img--before" width="1000" height="563" loading="lazy" />
+          </div>
+          <div class="ba__handle" id="baHandle">
+            <div class="ba__handle-line"></div>
+            <div class="ba__handle-circle">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6"/></svg>
+            </div>
+          </div>
+          <span class="ba__label ba__label--before">Avant</span>
+          <span class="ba__label ba__label--after">Après</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-head animate-on-scroll anim-blur">
+          <span class="section-eyebrow">Nos réalisations</span>
+          <h2 class="section-title">Le résultat en <span class="text-accent">images</span></h2>
+        </div>
+
+        <div class="gallery__grid">
+          <div class="gallery__card animate-on-scroll">
+            <img src="assets/images/before-after/after-1.jpg" alt="Sièges tissu après detailing" loading="lazy" width="400" height="300" />
+            <span class="gallery__label gallery__label--accent">Sièges tissu</span>
+          </div>
+
+          <div class="gallery__card animate-on-scroll">
+            <img src="assets/images/before-after/before-1.jpg" alt="État avant detailing" loading="lazy" width="400" height="300" />
+            <span class="gallery__label">Avant intervention</span>
+          </div>
+
+          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
+            <div class="gallery__placeholder-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="gallery__placeholder-label">Tapis &amp; Moquettes</span>
+            <span class="gallery__placeholder-sub">Photo à venir</span>
+          </div>
+
+          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
+            <div class="gallery__placeholder-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="gallery__placeholder-label">Tableau de bord</span>
+            <span class="gallery__placeholder-sub">Photo à venir</span>
+          </div>
+
+          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
+            <div class="gallery__placeholder-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
+            </div>
+            <span class="gallery__placeholder-label">Cuirs &amp; Plastiques</span>
+            <span class="gallery__placeholder-sub">Photo à venir</span>
+          </div>
+
+          <!-- REMPLACER : URL Instagram -->
+          <a href="#" target="_blank" rel="noopener" class="gallery__card gallery__card--insta animate-on-scroll" aria-label="Voir notre portfolio sur Instagram">
+            <div class="gallery__insta-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
+            </div>
+            <span class="gallery__insta-text">Voir toutes<br>nos réalisations</span>
+            <span class="gallery__insta-sub">@nom_instagram</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ BOOKING ============ -->
     <section class="booking" id="booking">
       <div class="container">
@@ -636,6 +542,99 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
             Annulation flexible
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="section-head animate-on-scroll anim-blur">
+          <span class="section-eyebrow">Avis vérifiés Google</span>
+          <h2 class="section-title">Ils nous ont fait <span class="text-accent">confiance</span></h2>
+        </div>
+
+        <div class="reviews__rating animate-on-scroll">
+          <div class="reviews__score">
+            <div class="reviews__score-number">4.9</div>
+            <div class="reviews__stars" aria-label="4.9 étoiles sur 5">
+              <span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span><span class="star" aria-hidden="true">★</span>
+            </div>
+            <div class="reviews__score-text">Basé sur <strong>487 avis Google</strong></div>
+          </div>
+          <!-- REMPLACER : LIEN_GOOGLE -->
+          <a href="LIEN_GOOGLE" target="_blank" rel="noopener" class="btn btn--outline">
+            Voir tous les avis
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+        </div>
+
+        <div class="reviews__grid">
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Travail irréprochable. Ma voiture est comme neuve, jusque dans les moindres recoins. Je recommande à 100%."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(59,130,246,0.18)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#3B82F6">TL</text></svg>
+              <div><strong>Thomas L.</strong><span>Il y a 2 semaines</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Service ultra pro, ponctuel et soigné. Le résultat dépasse mes attentes. Je reviendrai sans hésiter."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(99,179,237,0.18)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#63B3ED">SM</text></svg>
+              <div><strong>Sarah M.</strong><span>Il y a 1 mois</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Un travail d'orfèvre. Les taches que je pensais incrustées ont disparu. Rapport qualité/prix imbattable."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(74,222,128,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#4ade80">KB</text></svg>
+              <div><strong>Karim B.</strong><span>Il y a 3 semaines</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"J'avais des taches de café sur les sièges depuis des mois. Tout a disparu. Résultat bluffant, je n'aurais pas cru c'était possible."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(248,113,113,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#F87171">MR</text></svg>
+              <div><strong>Marie R.</strong><span>Il y a 5 jours</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Ponctuel, soigneux et vraiment passionné par son métier. On sent la différence avec les laveries classiques. Ma BMW n'a jamais été aussi propre."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(167,139,250,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#A78BFA">LP</text></svg>
+              <div><strong>Lucas P.</strong><span>Il y a 2 semaines</span></div>
+            </div>
+          </article>
+
+          <article class="review-card animate-on-scroll">
+            <div class="review-card__stars" aria-label="5 étoiles">★★★★★</div>
+            <p class="review-card__text">"Formule Complet prise pour mon van après un road trip. C'est propre, ça sent bon, et chaque recoin a été traité. Je recommande les yeux fermés."</p>
+            <div class="review-card__author">
+              <svg class="review-card__avatar" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="rgba(251,191,36,0.16)"/><text x="20" y="26" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="600" fill="#FBBF24">AD</text></svg>
+              <div><strong>Amélie D.</strong><span>Il y a 3 jours</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="reviews__banner animate-on-scroll">
+          <div class="reviews__banner-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="reviews__banner-content">
+            <strong>Laissez un avis Google après votre prestation</strong>
+            <span>= <span class="text-accent">5 €</span> de remise sur votre prochaine réservation</span>
+          </div>
+          <!-- REMPLACER : LIEN_GOOGLE -->
+          <a href="LIEN_GOOGLE" target="_blank" rel="noopener" class="btn btn--accent">Laisser un avis</a>
         </div>
       </div>
     </section>
@@ -751,7 +750,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- ============ FOOTER ============ -->
@@ -776,11 +774,11 @@
       <div class="footer__col">
         <h4>Navigation</h4>
         <a href="#services">Prestations</a>
+        <a href="#zone">Zone d'intervention</a>
         <a href="#before-after">Avant / Après</a>
+        <a href="#booking">Réserver</a>
         <a href="#reviews">Avis clients</a>
         <a href="#faq">FAQ</a>
-        <a href="#zone">Zone d'intervention</a>
-        <a href="#booking">Réserver</a>
       </div>
 
       <div class="footer__col">

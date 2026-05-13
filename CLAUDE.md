@@ -50,11 +50,11 @@ js/
 
 1. Hero (`#hero`)
 2. Services (`#services`)
-3. Avant/Après (`#before-after`)
-4. Galerie (`#gallery`)
-5. Avis (`#reviews`)
-6. Zone d'intervention (`#zone`)
-7. Réservation (`#booking`)
+3. Zone d'intervention (`#zone`)
+4. Avant/Après (`#before-after`)
+5. Galerie (`#gallery`)
+6. Réservation (`#booking`)
+7. Avis (`#reviews`)
 8. FAQ (`#faq`)
 9. Footer
 
