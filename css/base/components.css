@@ -149,9 +149,19 @@
 }
 
 /* ========== Responsive overrides ========== */
+@media (max-width: 900px) {
+  .section-head {
+    margin-bottom: var(--space-10);
+  }
+}
+
 @media (max-width: 768px) {
   .section-head {
     margin-bottom: var(--space-8);
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 6vw, 3rem);
   }
 
   .section-head--loose .section-subtitle {
@@ -170,11 +180,11 @@
   }
 
   .section-title {
-    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    font-size: clamp(1.65rem, 8vw, 2.4rem);
   }
 
   .section-subtitle {
-    font-size: var(--fs-base);
+    font-size: var(--fs-sm);
   }
 
   .section-head--loose .section-subtitle {
@@ -185,5 +195,16 @@
   .btn--lg {
     padding: var(--space-3) var(--space-6);
     font-size: var(--fs-sm);
+  }
+}
+
+@media (max-width: 360px) {
+  .section-title {
+    font-size: clamp(1.5rem, 8vw, 2rem);
+  }
+
+  .section-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
   }
 }

@@ -160,7 +160,15 @@
   background-position: center;
 }
 
+/* Grande tablette (1024px) : gap réduit, 3 colonnes conservées */
 @media (max-width: 1024px) {
+  .services__grid {
+    gap: var(--space-5);
+  }
+}
+
+/* Tablette portrait & mobile (≤860px) : 1 colonne centrée */
+@media (max-width: 860px) {
   .services__grid {
     grid-template-columns: 1fr;
     max-width: 520px;
@@ -172,7 +180,6 @@
 @media (max-width: 768px) {
   .services__grid {
     max-width: 100%;
-    gap: var(--space-4);
   }
 
   .service-card {

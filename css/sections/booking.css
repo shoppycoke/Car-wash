@@ -180,3 +180,10 @@
     font-size: var(--fs-xs);
   }
 }
+
+@media (max-width: 360px) {
+  .booking__wrap .calendly-inline-widget {
+    height: 540px !important;
+    min-width: 260px !important;
+  }
+}

@@ -489,3 +489,11 @@
   .zone__contact-btns { flex-direction: column; }
   .zone__contact-btns .btn { width: 100%; justify-content: center; }
 }
+
+@media (max-width: 360px) {
+  .zone__radar-wrap { max-width: 260px; }
+
+  .zone__kpis { padding: var(--space-3) var(--space-3); gap: 0; }
+  .zone__kpi-val { font-size: var(--fs-lg); }
+  .zone__kpi-div { margin: 0 var(--space-2); height: 24px; }
+}

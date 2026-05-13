@@ -184,3 +184,11 @@
     font-size: var(--fs-xs);
   }
 }
+
+/* Très petits écrans : 1 colonne pour ne pas trop compresser les images */
+@media (max-width: 360px) {
+  .gallery__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}
