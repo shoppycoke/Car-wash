@@ -25,7 +25,6 @@ css/
     before-after.css
     gallery.css
     review.css
-    loyalty.css
     zone.css
     booking.css
     faq.css
@@ -40,7 +39,6 @@ js/
   parallax.js           — parallax hero background (desktop uniquement)
   tilt.js               — 3D tilt cards (desktop uniquement)
   before-after.js       — slider avant/après drag+touch
-  loyalty.js            — copie code parrainage
   calendly.js           — fallback si Calendly non configuré
   faq.js                — accordion FAQ
   page-loader.js        — loader initial
@@ -55,11 +53,10 @@ js/
 3. Avant/Après (`#before-after`)
 4. Galerie (`#gallery`)
 5. Avis (`#reviews`)
-6. Fidélité (`#loyalty`)
-7. Zone d'intervention (`#zone`)
-8. Réservation (`#booking`)
-9. FAQ (`#faq`)
-10. Footer
+6. Zone d'intervention (`#zone`)
+7. Réservation (`#booking`)
+8. FAQ (`#faq`)
+9. Footer
 
 ---
 
@@ -165,6 +162,7 @@ padding-bottom: calc(var(--space-8) + 72px + env(safe-area-inset-bottom, 0px));
 ## Sections supprimées (ne pas réintroduire)
 
 - **"Notre histoire" (about)** — section, `css/sections/about.css`, import dans `main.css`, liens dans nav/footer, dot dans `scroll-nav`, stats/values dans `animations.js` → tout supprimé
+- **"Fidélité & Parrainage" (loyalty)** — section `#loyalty`, `css/sections/loyalty.css`, `js/loyalty.js`, dot dans `scroll-nav`, liens nav/footer → tout supprimé. Pas de Supabase, pas d'auth, pas de dashboard.
 
 ---
 
@@ -177,6 +175,7 @@ Services (3 cartes), Booking (Calendly), Reviews (6 cartes), Gallery dépassent 
 - Widget : `min-width: 320px; height: 720px` inline dans HTML
 - Overrides CSS avec `!important` dans `booking.css` : `580px` ≤768px, `520px` ≤480px
 - Fallback `#bookingFallback` (display:none) activé par script après 4s si pas d'iframe
+- Script Calendly chargé de façon conditionnelle : uniquement si `data-url` est configuré (pas `LIEN_CALENDLY`)
 
 ### Animations mobile
 - Glows du hero : `animation: none` à ≤768px (coût `filter: blur(140px)` sur deux éléments animés)
@@ -218,37 +217,3 @@ Services (3 cartes), Booking (Calendly), Reviews (6 cartes), Gallery dépassent 
 | `votre-domaine.fr` | `index.html` — meta canonical, OG url, schema.org |
 | `hero-bg.jpg` | `assets/images/` — photo hero (LCP, preload déjà en place) |
 | `before-1.jpg` / `after-1.jpg` | `assets/images/before-after/` |
-
----
-
-## Système fidélité — Schéma Supabase v2
-
-### Fichiers
-- `supabase-schema.sql` — schéma complet à exécuter dans Supabase SQL Editor
-- `js/config.js` — clés Supabase (URL + anon key uniquement, jamais la service_role key)
-- `auth.html` + `js/auth.js` — connexion / inscription
-- `dashboard.html` + `js/dashboard.js` — espace client
-- `admin.html` + `js/admin.js` — panel admin
-
-### Champs profiles (v2)
-| Champ | Type | Notes |
-|---|---|---|
-| `full_name` | text | nom complet (ex-`prenom`) |
-| `email` | text | synchronisé depuis auth.users |
-| `phone` | text | (ex-`telephone`) |
-| `role` | text | `client` ou `admin` |
-| `loyalty_points` | integer | synchronisé auto par trigger (ex-`points`) |
-| `referral_code` | text unique | généré auto (ex-`code_parrainage`) |
-| `referred_by` | text | code saisi à l'inscription (ex-`parrain_id`) |
-
-### Fonctions SQL clés
-- `handle_new_user()` — trigger AFTER INSERT sur auth.users : crée le profil + enregistre le parrainage
-- `sync_loyalty_points()` — trigger sur points_transactions : recalcule loyalty_points
-- `is_admin()` — security definer : utilisé dans les policies RLS
-- `check_referral_code(code)` — RPC publique : valide un code sans exposer la table
-
-### Premier admin
-Après inscription via auth.html, exécuter dans Supabase SQL Editor :
-```sql
-update public.profiles set role = 'admin' where email = 'votre@email.fr';
-```

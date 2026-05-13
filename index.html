@@ -111,8 +111,6 @@
         <a href="#services">Prestations</a>
         <a href="#before-after">Avant / Après</a>
         <a href="#reviews">Avis</a>
-        <a href="#loyalty">Fidélité</a>
-        <a href="auth.html" class="header__nav-account">Mon espace</a>
       </nav>
 
       <a href="#booking" class="btn btn--accent header__cta">Réserver</a>
@@ -127,10 +125,8 @@
       <a href="#services">Prestations</a>
       <a href="#before-after">Avant / Après</a>
       <a href="#reviews">Avis</a>
-      <a href="#loyalty">Fidélité</a>
       <a href="#faq">FAQ</a>
       <a href="#zone">Zone d'intervention</a>
-      <a href="auth.html">Mon espace fidélité</a>
       <a href="#booking" class="btn btn--accent">Réserver maintenant</a>
     </div>
   </header>
@@ -142,7 +138,6 @@
     <button class="scroll-nav__dot"           data-target="before-after" title="Avant / Après"></button>
     <button class="scroll-nav__dot"           data-target="gallery"      title="Galerie"></button>
     <button class="scroll-nav__dot"           data-target="reviews"      title="Avis"></button>
-    <button class="scroll-nav__dot"           data-target="loyalty"      title="Fidélité"></button>
     <button class="scroll-nav__dot"           data-target="zone"         title="Zone"></button>
     <button class="scroll-nav__dot"           data-target="booking"      title="Réserver"></button>
     <button class="scroll-nav__dot"           data-target="faq"          title="FAQ"></button>
@@ -444,89 +439,6 @@
       </div>
     </section>
 
-    <!-- ============ LOYALTY ============ -->
-    <section class="loyalty" id="loyalty">
-      <div class="container">
-        <div class="section-head section-head--loose animate-on-scroll anim-blur">
-          <span class="section-eyebrow">Programme exclusif</span>
-          <h2 class="section-title">Fidélité &amp; <span class="text-accent">Parrainage</span></h2>
-          <p class="section-subtitle">Plus vous roulez avec nous,<br>plus vous économisez.</p>
-        </div>
-
-        <div class="loyalty__grid">
-          <div class="loyalty__card anim-left">
-            <div class="loyalty-card">
-              <div class="loyalty-card__shine"></div>
-              <div class="loyalty-card__header">
-                <span class="loyalty-card__brand">Dracarys Auto</span>
-                <span class="loyalty-card__type">Carte fidélité</span>
-              </div>
-              <div class="loyalty-card__points">
-                <span class="loyalty-card__points-num" data-counter="60">0</span>
-                <span class="loyalty-card__points-label">/ 100 points</span>
-              </div>
-              <div class="loyalty-card__progress">
-                <div class="loyalty-card__progress-bar" style="--progress: 60%"></div>
-              </div>
-              <div class="loyalty-card__footer">
-                <span>Encore 40 points</span>
-                <strong>= 10 € offerts</strong>
-              </div>
-            </div>
-
-            <div class="loyalty__info">
-              <div class="loyalty__info-row">
-                <div class="loyalty__info-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg>
-                </div>
-                <div>
-                  <strong>10 points par prestation</strong>
-                  <span>Automatiquement crédités après paiement</span>
-                </div>
-              </div>
-              <div class="loyalty__info-row">
-                <div class="loyalty__info-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
-                </div>
-                <div>
-                  <strong>100 points = 10 € de remise</strong>
-                  <span>Cumulables sur vos prochaines réservations</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="loyalty__referral anim-right">
-            <div class="referral">
-              <div class="referral__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </div>
-              <h3 class="referral__title">Parrainez vos proches</h3>
-              <p class="referral__desc">
-                Partagez votre code unique. Votre filleul obtient
-                <span class="text-accent">−10%</span> sur sa première réservation, et vous cumulez des points bonus.
-              </p>
-
-              <div class="referral__code">
-                <span class="referral__code-label">Votre code</span>
-                <div class="referral__code-box">
-                  <span id="referralCode">ABCD1234</span>
-                  <button class="referral__copy" id="copyCode" aria-label="Copier le code de parrainage">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                  </button>
-                </div>
-              </div>
-
-              <button class="btn btn--accent btn--block" id="generateCode">Obtenir mon code</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
 
     <!-- ============ ZONE D'INTERVENTION ============ -->
@@ -866,11 +778,9 @@
         <a href="#services">Prestations</a>
         <a href="#before-after">Avant / Après</a>
         <a href="#reviews">Avis clients</a>
-        <a href="#loyalty">Fidélité</a>
         <a href="#faq">FAQ</a>
         <a href="#zone">Zone d'intervention</a>
         <a href="#booking">Réserver</a>
-        <a href="auth.html">Mon espace fidélité</a>
       </div>
 
       <div class="footer__col">

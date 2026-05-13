@@ -3,7 +3,6 @@ import { initAnimations }  from './animations.js';
 import { initHeader }      from './header.js';
 import { initTilt }        from './tilt.js';
 import { initBeforeAfter } from './before-after.js';
-import { initLoyalty }     from './loyalty.js';
 import { initCalendly }    from './calendly.js';
 import { initFaq }         from './faq.js';
 import { initPageLoader }  from './page-loader.js';
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnimations();
   initTilt();
   initBeforeAfter();
-  initLoyalty();
   initCalendly();
   initFaq();
   initScrollNav();
