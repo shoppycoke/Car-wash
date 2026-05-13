@@ -5,32 +5,31 @@
   const sb = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
 
   // ── DOM ───────────────────────────────────────────────────
-  const adminLoading      = document.getElementById('adminLoading');
-  const adminLayout       = document.getElementById('adminLayout');
-  const logoutBtn         = document.getElementById('logoutBtn');
-  const clientListEl      = document.getElementById('clientList');
-  const adminPanel        = document.getElementById('adminPanel');
-  const searchInput       = document.getElementById('searchInput');
-  const statTotalClients  = document.getElementById('statTotalClients');
-  const statTotalPrest    = document.getElementById('statTotalPrestations');
-  const toastEl           = document.getElementById('adminToast');
+  const adminLoading     = document.getElementById('adminLoading');
+  const adminLayout      = document.getElementById('adminLayout');
+  const logoutBtn        = document.getElementById('logoutBtn');
+  const clientListEl     = document.getElementById('clientList');
+  const adminPanel       = document.getElementById('adminPanel');
+  const searchInput      = document.getElementById('searchInput');
+  const statTotalClients = document.getElementById('statTotalClients');
+  const statTotalPrest   = document.getElementById('statTotalPrestations');
+  const toastEl          = document.getElementById('adminToast');
 
   // ── State ─────────────────────────────────────────────────
-  let allClients    = [];
-  let selectedId    = null;
-  let toastTimer    = null;
+  let allClients = [];
+  let selectedId = null;
+  let toastTimer = null;
 
   // ── Init ──────────────────────────────────────────────────
   async function init() {
     const { data: { session } } = await sb.auth.getSession();
-    if (!session) { window.location.href = 'auth.html'; return; }
+    if (!session) { window.location.replace('auth.html'); return; }
 
-    // Vérifie le rôle admin
     const { data: prof } = await sb.from('profiles')
       .select('role').eq('id', session.user.id).single();
 
     if (!prof || prof.role !== 'admin') {
-      window.location.href = 'dashboard.html';
+      window.location.replace('dashboard.html');
       return;
     }
 
@@ -43,13 +42,12 @@
   async function loadClients() {
     const { data, error } = await sb
       .from('profiles')
-      .select('id, prenom, telephone, points, code_parrainage, created_at, role')
-      .eq('role', 'client')
+      .select('id, full_name, email, phone, loyalty_points, referral_code, role, created_at')
       .order('created_at', { ascending: false });
 
     if (error) { toast('Erreur de chargement des clients.', 'error'); return; }
 
-    allClients = data || [];
+    allClients = (data || []).filter(c => c.role === 'client');
     statTotalClients.textContent = allClients.length;
 
     const { count } = await sb.from('prestations')
@@ -65,17 +63,22 @@
       clientListEl.innerHTML = '<p class="admin-clients-empty">Aucun client trouvé.</p>';
       return;
     }
-    clientListEl.innerHTML = clients.map(c => `
-      <div class="admin-client-item ${selectedId === c.id ? 'is-active' : ''}"
-           data-id="${esc(c.id)}" role="button" tabindex="0">
-        <div class="admin-client-avatar">${esc(c.prenom[0])}</div>
-        <div class="admin-client-info">
-          <div class="admin-client-info__name">${esc(c.prenom)}</div>
-          <div class="admin-client-info__email">${c.telephone ? esc(c.telephone) : 'Pas de tel.'}</div>
+    clientListEl.innerHTML = clients.map(c => {
+      const initial = (c.full_name || c.email || '?')[0].toUpperCase();
+      const label   = c.full_name || c.email || 'Client';
+      const sub     = c.email || c.phone || 'Pas d\'e-mail';
+      return `
+        <div class="admin-client-item ${selectedId === c.id ? 'is-active' : ''}"
+             data-id="${esc(c.id)}" role="button" tabindex="0">
+          <div class="admin-client-avatar">${initial}</div>
+          <div class="admin-client-info">
+            <div class="admin-client-info__name">${esc(label)}</div>
+            <div class="admin-client-info__email">${esc(sub)}</div>
+          </div>
+          <span class="admin-client-pts">${c.loyalty_points} pts</span>
         </div>
-        <span class="admin-client-pts">${c.points} pts</span>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
     clientListEl.querySelectorAll('.admin-client-item').forEach(el => {
       el.addEventListener('click', () => selectClient(el.dataset.id));
@@ -89,9 +92,10 @@
   searchInput.addEventListener('input', () => {
     const q = searchInput.value.toLowerCase().trim();
     const filtered = allClients.filter(c =>
-      c.prenom.toLowerCase().includes(q) ||
-      (c.telephone || '').includes(q) ||
-      c.code_parrainage.toLowerCase().includes(q)
+      (c.full_name     || '').toLowerCase().includes(q) ||
+      (c.email         || '').toLowerCase().includes(q) ||
+      (c.phone         || '').includes(q)               ||
+      (c.referral_code || '').toLowerCase().includes(q)
     );
     renderClientList(filtered);
   });
@@ -100,7 +104,6 @@
   async function selectClient(id) {
     selectedId = id;
 
-    // Highlight
     clientListEl.querySelectorAll('.admin-client-item').forEach(el => {
       el.classList.toggle('is-active', el.dataset.id === id);
     });
@@ -110,12 +113,11 @@
     const client = allClients.find(c => c.id === id);
     if (!client) return;
 
-    // Charger données complètes
     const [prestRes, txRes, redRes, parrRes] = await Promise.all([
       sb.from('prestations').select('*').eq('client_id', id).order('date', { ascending: false }).limit(20),
       sb.from('points_transactions').select('*').eq('client_id', id).order('created_at', { ascending: false }).limit(30),
       sb.from('reductions').select('*').eq('client_id', id).eq('utilisee', false),
-      sb.from('parrainages').select('*, filleul:filleul_id(prenom)').eq('parrain_id', id).order('created_at', { ascending: false })
+      sb.from('parrainages').select('*, filleul:filleul_id(full_name, email)').eq('parrain_id', id).order('created_at', { ascending: false })
     ]);
 
     renderClientDetail(client, prestRes.data || [], txRes.data || [], redRes.data || [], parrRes.data || []);
@@ -123,22 +125,26 @@
 
   // ── Rendu détail client ───────────────────────────────────
   function renderClientDetail(c, prestations, transactions, reductions, parrainages) {
+    const initial  = (c.full_name || c.email || '?')[0].toUpperCase();
+    const nameDisp = c.full_name || '—';
+
     adminPanel.innerHTML = `
       <div class="admin-client-detail">
 
         <!-- Head -->
         <div class="admin-detail-head">
-          <div class="admin-detail-avatar">${esc(c.prenom[0])}</div>
+          <div class="admin-detail-avatar">${initial}</div>
           <div class="admin-detail-info">
-            <div class="admin-detail-info__name">${esc(c.prenom)}</div>
+            <div class="admin-detail-info__name">${esc(nameDisp)}</div>
             <div class="admin-detail-info__meta">
-              ${c.telephone ? esc(c.telephone) : 'Pas de téléphone'} ·
-              Code: <strong>${esc(c.code_parrainage)}</strong> ·
+              ${c.email ? `${esc(c.email)} · ` : ''}
+              ${c.phone ? `${esc(c.phone)} · ` : ''}
+              Code : <strong>${esc(c.referral_code)}</strong> ·
               Depuis ${fmtDate(c.created_at)}
             </div>
           </div>
           <div class="admin-detail-info__pts">
-            <div class="admin-detail-info__pts-val">${c.points}</div>
+            <div class="admin-detail-info__pts-val">${c.loyalty_points}</div>
             <div class="admin-detail-info__pts-lbl">points</div>
           </div>
         </div>
@@ -172,7 +178,7 @@
               </div>
               <div class="admin-field">
                 <label>Note (facultatif)</label>
-                <input type="text" id="prestNote" placeholder="Ex: véhicule SUV, état initial délicat…" />
+                <input type="text" id="prestNote" placeholder="Ex : SUV, état initial délicat…" />
               </div>
               <button class="admin-btn admin-btn--primary" id="btnAddPrestation">
                 Valider + créditer les points
@@ -186,7 +192,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
               Ajustement manuel des points
             </div>
-            <div class="admin-form" id="formManuel">
+            <div class="admin-form">
               <div class="admin-field">
                 <label>Action</label>
                 <select id="manuelAction">
@@ -200,7 +206,7 @@
               </div>
               <div class="admin-field">
                 <label>Raison</label>
-                <input type="text" id="manuelRaison" placeholder="Ex: correction, geste commercial…" />
+                <input type="text" id="manuelRaison" placeholder="Ex : geste commercial, correction…" />
               </div>
               <button class="admin-btn admin-btn--warn" id="btnManuel">
                 Appliquer l'ajustement
@@ -216,11 +222,11 @@
             </div>
             <div class="admin-form">
               <p style="font-size:var(--fs-xs);color:var(--text-muted);line-height:1.5">
-                Accordez une réduction de <strong>5 €</strong> au client après vérification de son avis positif sur Google.
+                Accordez une réduction de <strong>5 €</strong> après vérification de l'avis positif sur Google.
               </p>
               <div class="admin-field">
                 <label>Commentaire (facultatif)</label>
-                <input type="text" id="avisComment" placeholder="Ex: avis vérifié le 12/05/2026" />
+                <input type="text" id="avisComment" placeholder="Ex : avis vérifié le 12/05/2026" />
               </div>
               <button class="admin-btn admin-btn--success" id="btnValiderAvis">
                 Accorder 5 € de réduction
@@ -237,21 +243,24 @@
             <div class="admin-form">
               ${parrainages.length ? `
                 <div class="admin-parr-list" id="parrList">
-                  ${parrainages.map(p => `
-                    <div class="admin-parr-item">
-                      <div>
-                        <div class="admin-parr-item__name">${esc(p.filleul?.prenom || 'Filleul')}</div>
-                        <div class="admin-parr-item__date">${fmtDate(p.created_at)}</div>
+                  ${parrainages.map(p => {
+                    const filleulLabel = p.filleul?.full_name || p.filleul?.email || 'Filleul';
+                    return `
+                      <div class="admin-parr-item">
+                        <div>
+                          <div class="admin-parr-item__name">${esc(filleulLabel)}</div>
+                          <div class="admin-parr-item__date">${fmtDate(p.created_at)}</div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:.5rem">
+                          ${p.valide
+                            ? `<span class="admin-parr-item__status admin-parr-item__status--done">Validé</span>`
+                            : `<button class="admin-btn admin-btn--success" style="padding:.3rem .625rem"
+                                       data-parr-id="${esc(p.id)}">Valider → −10 %</button>`
+                          }
+                        </div>
                       </div>
-                      <div style="display:flex;align-items:center;gap:.5rem">
-                        ${p.valide
-                          ? `<span class="admin-parr-item__status admin-parr-item__status--done">Validé</span>`
-                          : `<button class="admin-btn admin-btn--success" style="padding:.3rem .625rem"
-                                    data-parr-id="${esc(p.id)}">Valider → −10 %</button>`
-                        }
-                      </div>
-                    </div>
-                  `).join('')}
+                    `;
+                  }).join('')}
                 </div>
               ` : '<p style="font-size:var(--fs-xs);color:var(--text-dim)">Aucun parrainage en attente.</p>'}
             </div>
@@ -328,16 +337,14 @@
       </div>
     `;
 
-    // Attacher les listeners sur les boutons du panel rendu
-    bindPanelActions(c, parrainages);
+    bindPanelActions(c);
   }
 
   // ── Liaisons actions ──────────────────────────────────────
-  function bindPanelActions(c, parrainages) {
-    // Préfill montant selon formule
+  function bindPanelActions(c) {
+    const formulePrices = { Essentiel: 49, Premium: 89, Complet: 149 };
     const formuleSelect = document.getElementById('prestFormule');
     const montantInput  = document.getElementById('prestMontant');
-    const formulePrices = { 'Essentiel': 49, 'Premium': 89, 'Complet': 149 };
     formuleSelect?.addEventListener('change', () => {
       const price = formulePrices[formuleSelect.value];
       if (price) montantInput.value = price;
@@ -379,8 +386,8 @@
         prestation_id: prest.id
       });
 
-      if (tErr) { toast('Prestation créée mais erreur sur les points.', 'error'); }
-      else       { toast(`Prestation ajoutée. +${points} points crédités.`, 'success'); }
+      if (tErr) toast('Prestation créée mais erreur sur les points.', 'error');
+      else      toast(`Prestation ajoutée. +${points} points crédités.`, 'success');
 
       await refreshClient(c.id);
     });
@@ -405,8 +412,8 @@
         description: desc
       });
 
-      if (error) { toast('Erreur lors de l\'ajustement.', 'error'); }
-      else       { toast(`${montant > 0 ? '+' : ''}${montant} points appliqués.`, 'success'); }
+      if (error) toast('Erreur lors de l\'ajustement.', 'error');
+      else       toast(`${montant > 0 ? '+' : ''}${montant} points appliqués.`, 'success');
 
       await refreshClient(c.id);
     });
@@ -423,8 +430,8 @@
         description: comment || 'Réduction pour avis Google positif validé par l\'admin'
       });
 
-      if (error) { toast('Erreur lors de la création de la réduction.', 'error'); }
-      else       { toast('Réduction de 5 € accordée pour l\'avis.', 'success'); }
+      if (error) toast('Erreur lors de la création de la réduction.', 'error');
+      else       toast('Réduction de 5 € accordée pour l\'avis.', 'success');
 
       await refreshClient(c.id);
     });
@@ -432,8 +439,8 @@
     // Valider parrainage
     adminPanel.querySelectorAll('[data-parr-id]').forEach(btn => {
       btn.addEventListener('click', async () => {
-        const parrId   = btn.dataset.parrId;
-        btn.disabled   = true;
+        const parrId = btn.dataset.parrId;
+        btn.disabled = true;
 
         const { error: pErr } = await sb.from('parrainages')
           .update({ valide: true, valide_at: new Date().toISOString(), reduction_creee: true })
@@ -447,8 +454,8 @@
           description: 'Réduction −10 % obtenue par parrainage validé'
         });
 
-        if (rErr) { toast('Parrainage validé mais erreur sur la réduction.', 'error'); }
-        else      { toast('Parrainage validé. Réduction −10 % accordée.', 'success'); }
+        if (rErr) toast('Parrainage validé mais erreur sur la réduction.', 'error');
+        else      toast('Parrainage validé. Réduction −10 % accordée.', 'success');
 
         await refreshClient(c.id);
       });
@@ -458,26 +465,24 @@
   // ── Rechargement client après action ─────────────────────
   async function refreshClient(id) {
     await loadClients();
-
-    const updated = allClients.find(c => c.id === id);
-    if (updated) await selectClient(id);
+    if (allClients.find(c => c.id === id)) await selectClient(id);
   }
 
   // ── Déconnexion ───────────────────────────────────────────
   logoutBtn.addEventListener('click', async () => {
     await sb.auth.signOut();
-    window.location.href = 'auth.html';
+    window.location.replace('auth.html');
   });
 
   // ── Toast ─────────────────────────────────────────────────
   function toast(msg, type = 'success') {
     clearTimeout(toastTimer);
     toastEl.textContent = msg;
-    toastEl.className = `admin-toast admin-toast--${type} is-visible`;
+    toastEl.className   = `admin-toast admin-toast--${type} is-visible`;
     toastTimer = setTimeout(() => toastEl.classList.remove('is-visible'), 3500);
   }
 
-  // ── Helpers ───────────────────────────────────────────────
+  // ── Utilitaires ───────────────────────────────────────────
   function esc(s) {
     return String(s || '')
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')

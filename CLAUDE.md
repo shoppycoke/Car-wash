@@ -218,3 +218,37 @@ Services (3 cartes), Booking (Calendly), Reviews (6 cartes), Gallery dépassent 
 | `votre-domaine.fr` | `index.html` — meta canonical, OG url, schema.org |
 | `hero-bg.jpg` | `assets/images/` — photo hero (LCP, preload déjà en place) |
 | `before-1.jpg` / `after-1.jpg` | `assets/images/before-after/` |
+
+---
+
+## Système fidélité — Schéma Supabase v2
+
+### Fichiers
+- `supabase-schema.sql` — schéma complet à exécuter dans Supabase SQL Editor
+- `js/config.js` — clés Supabase (URL + anon key uniquement, jamais la service_role key)
+- `auth.html` + `js/auth.js` — connexion / inscription
+- `dashboard.html` + `js/dashboard.js` — espace client
+- `admin.html` + `js/admin.js` — panel admin
+
+### Champs profiles (v2)
+| Champ | Type | Notes |
+|---|---|---|
+| `full_name` | text | nom complet (ex-`prenom`) |
+| `email` | text | synchronisé depuis auth.users |
+| `phone` | text | (ex-`telephone`) |
+| `role` | text | `client` ou `admin` |
+| `loyalty_points` | integer | synchronisé auto par trigger (ex-`points`) |
+| `referral_code` | text unique | généré auto (ex-`code_parrainage`) |
+| `referred_by` | text | code saisi à l'inscription (ex-`parrain_id`) |
+
+### Fonctions SQL clés
+- `handle_new_user()` — trigger AFTER INSERT sur auth.users : crée le profil + enregistre le parrainage
+- `sync_loyalty_points()` — trigger sur points_transactions : recalcule loyalty_points
+- `is_admin()` — security definer : utilisé dans les policies RLS
+- `check_referral_code(code)` — RPC publique : valide un code sans exposer la table
+
+### Premier admin
+Après inscription via auth.html, exécuter dans Supabase SQL Editor :
+```sql
+update public.profiles set role = 'admin' where email = 'votre@email.fr';
+```
