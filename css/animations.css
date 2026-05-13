@@ -240,18 +240,18 @@
 /* ========== Scroll-to-next button ========== */
 .scroll-next-wrap {
   position: absolute;
-  bottom: 2.5rem;
+  bottom: 3rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: var(--z-elevated);
   opacity: 0;
-  pointer-events: none;
+  pointer-events: none; /* le wrap ne bloque jamais les clics sous-jacents */
   transition: opacity 0.9s var(--ease-smooth);
 }
 
 .scroll-next-wrap.is-visible {
   opacity: 1;
-  pointer-events: auto;
+  /* pas de pointer-events: auto ici — seul le bouton lui-même est interactif */
 }
 
 .scroll-next {
@@ -271,6 +271,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
   color: var(--accent);
   cursor: pointer;
+  pointer-events: auto; /* seul le cercle est cliquable */
   transition:
     background 0.3s var(--ease-smooth),
     border-color 0.3s var(--ease-smooth),
@@ -318,12 +319,32 @@
   50%       { transform: translateY(7px); }
 }
 
+/* ── Positionnement par section ──────────────────────── */
+
+/* Masqué sur booking : Calendly + éléments de réassurance occupent tout l'espace */
+.booking .scroll-next-wrap { display: none; }
+
+/* Remonté au-dessus des boutons "Réserver" en bas des cartes */
+.services .scroll-next-wrap { bottom: 6.5rem; }
+
+/* Remonté au-dessus de la bannière "Laisser un avis" */
+.reviews  .scroll-next-wrap { bottom: 5.5rem; }
+
+/* Remonté au-dessus des boutons WhatsApp / Appeler */
+.zone     .scroll-next-wrap { bottom: 5rem; }
+
+/* ── Mobile ──────────────────────────────────────────── */
 @media (max-width: 900px) {
   .scroll-next-wrap {
-    bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 16px);
+    bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 20px);
   }
   .scroll-next { width: 40px; height: 40px; }
   .scroll-next svg { width: 16px; height: 16px; }
+
+  /* Sur mobile les sections avec des CTA en bas sont trop chargées */
+  .services .scroll-next-wrap,
+  .zone     .scroll-next-wrap,
+  .reviews  .scroll-next-wrap { display: none; }
 }
 
 /* ========== Reduced motion overrides ========== */
