@@ -43,7 +43,7 @@
   async function loadDashboard(userId) {
     try {
       const [profRes, prestRes, redRes, parRes] = await Promise.all([
-        sb.from('profiles').select('*').eq('id', userId).single(),
+        sb.from('profiles').select('*').eq('id', userId).maybeSingle(),
         sb.from('prestations')
           .select('*').eq('client_id', userId).eq('statut', 'completed')
           .order('date', { ascending: false }),
@@ -55,6 +55,12 @@
       ]);
 
       if (profRes.error) throw profRes.error;
+      if (!profRes.data) {
+        // Profil absent : l'utilisateur existait avant la migration du schéma
+        await sb.auth.signOut();
+        window.location.replace('auth.html');
+        return;
+      }
       profile = profRes.data;
 
       render(profile, prestRes.data || [], redRes.data || [], parRes.data || []);

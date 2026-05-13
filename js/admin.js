@@ -26,7 +26,7 @@
     if (!session) { window.location.replace('auth.html'); return; }
 
     const { data: prof } = await sb.from('profiles')
-      .select('role').eq('id', session.user.id).single();
+      .select('role').eq('id', session.user.id).maybeSingle();
 
     if (!prof || prof.role !== 'admin') {
       window.location.replace('dashboard.html');
