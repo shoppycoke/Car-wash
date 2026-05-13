@@ -507,22 +507,34 @@
         </div>
 
         <div class="booking__wrap animate-on-scroll anim-scale" id="bookingWrap">
-          <!-- REMPLACER : LIEN_CALENDLY par votre URL Calendly (ex: https://calendly.com/votre-nom/detailing) -->
+          <!-- Loader affiché pendant le chargement de Calendly -->
+          <div class="booking__loading" id="bookingLoading" aria-hidden="true">
+            <div class="booking__loading-inner">
+              <div class="booking__loading-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+              </div>
+              <p class="booking__loading-text">Chargement du calendrier…</p>
+              <div class="booking__loading-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          </div>
           <div class="calendly-inline-widget"
-               data-url="LIEN_CALENDLY"
-               style="min-width:320px;height:720px;"></div>
+               data-url="https://calendly.com/barthsami/new-meeting?background_color=0b132b&text_color=f4f4f4&primary_color=5bc0be&hide_gdpr_banner=1"
+               style="min-width:320px;height:700px;"></div>
         </div>
 
-        <!-- Fallback si Calendly non configuré -->
-        <div class="booking__fallback animate-on-scroll" id="bookingFallback" style="display:none">
-          <p>La réservation en ligne sera disponible très prochainement.</p>
-          <p>En attendant, contactez-nous directement :</p>
-          <div class="zone__contact-btns" style="justify-content:center;margin-top:1rem">
-            <!-- REMPLACER : numéro WhatsApp -->
+        <!-- Fallback si Calendly échoue à charger -->
+        <div class="booking__fallback" id="bookingFallback" style="display:none">
+          <p>La réservation en ligne est temporairement indisponible.</p>
+          <p>Contactez-nous directement pour réserver :</p>
+          <div class="zone__contact-btns" style="justify-content:center;margin-top:1.5rem">
             <a href="https://wa.me/33600000000" target="_blank" rel="noopener" class="btn btn--accent btn--lg">
               Réserver via WhatsApp
             </a>
-            <!-- REMPLACER : numéro de téléphone -->
             <a href="tel:+33000000000" class="btn btn--ghost btn--lg">
               Appeler directement
             </a>
@@ -810,36 +822,51 @@
   <!-- JS -->
   <script type="module" src="js/main.js"></script>
 
-  <!-- Calendly : ne charge le script que si l'URL est configurée -->
+  <!-- Calendly inline embed -->
   <script>
     (function () {
       var widget   = document.querySelector('.calendly-inline-widget');
+      var loading  = document.getElementById('bookingLoading');
       var wrap     = document.getElementById('bookingWrap');
       var fallback = document.getElementById('bookingFallback');
-      if (!widget || !fallback) return;
+      if (!widget) return;
 
-      var url = widget.getAttribute('data-url') || '';
-      var isConfigured = url.length > 0 && url !== 'LIEN_CALENDLY' && url.indexOf('http') === 0;
-
-      if (!isConfigured) {
-        // URL non configurée : affiche le fallback immédiatement, sans appel réseau
-        if (wrap) wrap.style.display = 'none';
-        fallback.style.display = 'block';
-        return;
-      }
-
-      // URL configurée : charge le script Calendly puis vérifie l'iframe après 4s
+      // Injection du script Calendly
       var s = document.createElement('script');
       s.src   = 'https://assets.calendly.com/assets/external/widget.js';
       s.async = true;
       document.body.appendChild(s);
 
+      // Révèle le widget et masque le loader
+      var revealed = false;
+      function revealCalendly() {
+        if (revealed) return;
+        revealed = true;
+        widget.classList.add('is-ready');
+        if (loading) {
+          loading.classList.add('is-done');
+          setTimeout(function () { loading.style.display = 'none'; }, 550);
+        }
+      }
+
+      // Calendly signale que le calendrier est prêt
+      window.addEventListener('message', function (e) {
+        if (e.data && (
+          e.data.event === 'calendly.event_type_viewed' ||
+          e.data.event === 'calendly.profile_page_viewed'
+        )) revealCalendly();
+      });
+
+      // Fallback : révèle après 7s (connexion lente)
+      setTimeout(revealCalendly, 7000);
+
+      // Fallback erreur : affiche les contacts si aucune iframe après 14s
       setTimeout(function () {
         if (!widget.querySelector('iframe')) {
           if (wrap) wrap.style.display = 'none';
-          fallback.style.display = 'block';
+          if (fallback) fallback.style.display = 'block';
         }
-      }, 4000);
+      }, 14000);
     })();
   </script>
 

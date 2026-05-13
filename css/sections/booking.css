@@ -29,11 +29,86 @@
   z-index: 1;
 }
 
+/* ── Calendly widget ─────────────────────────────────── */
 .booking__wrap .calendly-inline-widget {
   border-radius: var(--radius-sm);
   overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-smooth);
+  display: block;
 }
 
+.booking__wrap .calendly-inline-widget.is-ready {
+  opacity: 1;
+}
+
+/* ── Loading skeleton ────────────────────────────────── */
+.booking__loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(11, 19, 43, 0.94);
+  border-radius: inherit;
+  z-index: 10;
+  transition: opacity 0.5s var(--ease-smooth);
+  pointer-events: none;
+}
+
+.booking__loading.is-done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.booking__loading-inner {
+  text-align: center;
+  padding: var(--space-8);
+}
+
+.booking__loading-icon {
+  width: 54px;
+  height: 54px;
+  color: var(--accent);
+  margin: 0 auto var(--space-5);
+  animation: booking-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes booking-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.92); }
+  50%       { opacity: 1;   transform: scale(1); }
+}
+
+.booking__loading-text {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin: 0 0 var(--space-5);
+  letter-spacing: 0.02em;
+}
+
+.booking__loading-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.booking__loading-dots span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: booking-dot 1.4s ease-in-out infinite;
+}
+
+.booking__loading-dots span:nth-child(2) { animation-delay: 0.22s; }
+.booking__loading-dots span:nth-child(3) { animation-delay: 0.44s; }
+
+@keyframes booking-dot {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.75); }
+  40%           { opacity: 1;   transform: scale(1.15); }
+}
+
+/* ── Fallback ────────────────────────────────────────── */
 .booking__fallback {
   text-align: center;
   padding: var(--space-16) var(--space-8);
@@ -48,6 +123,7 @@
   z-index: 1;
 }
 
+/* ── Reassurance ─────────────────────────────────────── */
 .booking__reassurance {
   display: flex;
   justify-content: center;
@@ -73,6 +149,7 @@
   flex-shrink: 0;
 }
 
+/* ── Responsive ──────────────────────────────────────── */
 @media (max-width: 768px) {
   .booking__reassurance {
     gap: var(--space-4);
@@ -80,9 +157,8 @@
     align-items: center;
   }
 
-  /* Override Calendly inline height for mobile */
   .booking__wrap .calendly-inline-widget {
-    height: 580px !important;
+    height: 650px !important;
     min-width: 280px !important;
   }
 }
@@ -93,7 +169,7 @@
   }
 
   .booking__wrap .calendly-inline-widget {
-    height: 520px !important;
+    height: 580px !important;
   }
 
   .booking__reassurance {
