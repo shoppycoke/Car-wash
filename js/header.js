@@ -37,6 +37,19 @@ export function initHeader() {
     });
   }
 
+  // Contact button — copy email + toast fallback
+  const contactBtn   = document.getElementById('contactBtn');
+  const contactToast = document.getElementById('contactToast');
+  if (contactBtn && contactToast) {
+    let toastTimer = null;
+    contactBtn.addEventListener('click', () => {
+      navigator.clipboard?.writeText('clairysauto@gmail.com').catch(() => {});
+      contactToast.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => contactToast.classList.remove('is-visible'), 2800);
+    });
+  }
+
   // Scroll spy
   const navLinks = document.querySelectorAll('.header__nav a[href^="#"]');
   if (!navLinks.length) return;

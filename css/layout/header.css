@@ -25,6 +25,7 @@
   justify-content: space-between;
   height: 100%;
   gap: var(--space-6);
+  position: relative;
 }
 
 .header__logo {
@@ -124,7 +125,43 @@
 }
 
 .header__cta--contact:hover::after {
-  opacity: 0; /* désactive l'overlay blanc générique du .btn */
+  opacity: 0;
+}
+
+/* ── Toast "Email copié !" ── */
+.contact-toast {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-6px);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-elev-2);
+  border: 1px solid rgba(91, 192, 190, 0.35);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--accent);
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 16px rgba(91, 192, 190, 0.12);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.28s var(--ease-smooth), transform 0.28s var(--ease-smooth);
+  z-index: 200;
+}
+
+.contact-toast svg {
+  width: 13px;
+  height: 13px;
+  stroke: var(--accent);
+  flex-shrink: 0;
+}
+
+.contact-toast.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .header__burger {

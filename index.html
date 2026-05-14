@@ -116,10 +116,14 @@
         <a href="#reviews">Avis</a>
       </nav>
 
-      <a href="mailto:clairysauto@gmail.com?subject=Demande%20de%20contact%20%E2%80%94%20Clairys%20Auto" class="btn header__cta header__cta--contact" aria-label="Nous contacter par email">
+      <a href="mailto:clairysauto@gmail.com?subject=Contact%20Clairys%20Auto" class="btn header__cta header__cta--contact" id="contactBtn" aria-label="Nous contacter par email">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         Nous contacter
       </a>
+      <div class="contact-toast" id="contactToast" aria-live="polite">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Email copié !
+      </div>
       <a href="#booking" class="btn btn--accent header__cta">Réserver</a>
 
       <button class="header__burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
