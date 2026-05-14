@@ -17,19 +17,22 @@
 }
 
 .booking__wrap {
-  background: #0b132b; /* exact match with Calendly background_color param */
-  border: 1px solid var(--border-glass-strong);
-  border-radius: var(--radius-md);
-  padding: 0;
+  background: #0d1b4a;
+  border: 1px solid rgba(58, 134, 255, 0.45);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
   overflow: hidden;
-  box-shadow: var(--shadow-lg), 0 0 50px rgba(91, 192, 190, 0.06);
+  box-shadow:
+    0 0 0 1px rgba(58, 134, 255, 0.07),
+    var(--shadow-lg),
+    0 0 80px rgba(58, 134, 255, 0.14);
   position: relative;
   z-index: 1;
 }
 
 /* ── Calendly widget ─────────────────────────────────── */
 .booking__wrap .calendly-inline-widget {
-  border-radius: 0; /* parent overflow:hidden clips corners */
+  border-radius: var(--radius-md);
   overflow: hidden;
   opacity: 0;
   transition: opacity 0.7s var(--ease-smooth);
@@ -47,7 +50,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(11, 19, 43, 0.94);
+  background: rgba(13, 27, 74, 0.96);
   border-radius: inherit;
   z-index: 10;
   transition: opacity 0.5s var(--ease-smooth);
