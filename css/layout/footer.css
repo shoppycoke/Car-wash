@@ -77,35 +77,61 @@
 
 .footer__socials {
   display: flex;
-  gap: var(--space-2);
+  gap: var(--space-3);
   flex-wrap: wrap;
 }
 
 .footer__socials a {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(28, 37, 65, 0.7);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius-xs);
+  background: rgba(28, 37, 65, 0.6);
+  border: 1px solid rgba(244, 244, 244, 0.08);
+  border-radius: var(--radius-sm);
   margin-bottom: 0;
-  transition: all var(--transition-fast);
+  transition: all var(--transition-base);
   color: var(--text-dim);
 }
 
-.footer__socials a:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: rgba(91, 192, 190, 0.08);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(91, 192, 190, 0.15);
+.footer__socials svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
 }
 
-.footer__socials svg {
-  width: 16px;
-  height: 16px;
+/* ── Hover couleur de marque ── */
+.footer__socials a:hover {
+  transform: translateY(-3px);
+}
+
+.footer__social--insta:hover {
+  color: #E1306C;
+  border-color: rgba(225, 48, 108, 0.5);
+  background: rgba(225, 48, 108, 0.08);
+  box-shadow: 0 8px 20px rgba(225, 48, 108, 0.2);
+}
+
+.footer__social--fb:hover {
+  color: #1877F2;
+  border-color: rgba(24, 119, 242, 0.5);
+  background: rgba(24, 119, 242, 0.08);
+  box-shadow: 0 8px 20px rgba(24, 119, 242, 0.2);
+}
+
+.footer__social--tiktok:hover {
+  color: #FE2C55;
+  border-color: rgba(254, 44, 85, 0.5);
+  background: rgba(254, 44, 85, 0.08);
+  box-shadow: 0 8px 20px rgba(254, 44, 85, 0.2);
+}
+
+.footer__social--wa:hover {
+  color: #25D366;
+  border-color: rgba(37, 211, 102, 0.5);
+  background: rgba(37, 211, 102, 0.08);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2);
 }
 
 .footer__bottom {
