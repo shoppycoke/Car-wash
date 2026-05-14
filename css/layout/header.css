@@ -98,11 +98,33 @@
 
 .header__cta--contact {
   padding: var(--space-2) var(--space-4);
-  color: var(--text-muted);
+  color: var(--accent);
+  background: rgba(91, 192, 190, 0.08);
+  border: 1px solid rgba(91, 192, 190, 0.3);
+  border-radius: var(--radius-btn);
+  font-weight: var(--fw-medium);
+  transition: all var(--transition-base);
+}
+
+.header__cta--contact svg {
+  stroke: var(--accent);
+  transition: transform var(--transition-base);
 }
 
 .header__cta--contact:hover {
-  color: var(--accent);
+  color: var(--accent-light);
+  background: rgba(91, 192, 190, 0.15);
+  border-color: rgba(91, 192, 190, 0.55);
+  box-shadow: 0 0 24px rgba(91, 192, 190, 0.18);
+  transform: translateY(-1px);
+}
+
+.header__cta--contact:hover svg {
+  transform: translateY(-1px);
+}
+
+.header__cta--contact:hover::after {
+  opacity: 0; /* désactive l'overlay blanc générique du .btn */
 }
 
 .header__burger {
