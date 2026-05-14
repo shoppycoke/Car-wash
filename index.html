@@ -120,10 +120,6 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         Nous contacter
       </a>
-      <div class="contact-toast" id="contactToast" aria-live="polite">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        Email copié !
-      </div>
       <a href="#booking" class="btn btn--accent header__cta">Réserver</a>
 
       <button class="header__burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
@@ -338,11 +334,12 @@
                 <span class="zone__origin-label">La Salvetat-<br>Saint-Gilles</span>
               </div>
               <!-- City pins — toutes dans la zone prioritaire (≤25 km) -->
+              <!-- Zone prioritaire (≤25 km) -->
               <div class="zone__pin" style="--x:67%;--y:54%">
                 <div class="zone__pin-dot"></div>
                 <span class="zone__pin-name">Toulouse</span>
               </div>
-              <div class="zone__pin" style="--x:59%;--y:44%">
+              <div class="zone__pin zone__pin--minor" style="--x:59%;--y:44%">
                 <div class="zone__pin-dot"></div>
                 <span class="zone__pin-name">Colomiers</span>
               </div>
@@ -362,13 +359,26 @@
                 <div class="zone__pin-dot"></div>
                 <span class="zone__pin-name">Muret</span>
               </div>
-              <div class="zone__pin" style="--x:54%;--y:62%">
+              <div class="zone__pin zone__pin--minor" style="--x:54%;--y:62%">
                 <div class="zone__pin-dot"></div>
                 <span class="zone__pin-name">Plaisance</span>
               </div>
               <div class="zone__pin" style="--x:72%;--y:61%">
                 <div class="zone__pin-dot"></div>
                 <span class="zone__pin-name">Ramonville</span>
+              </div>
+              <!-- Zone étendue (25–40 km) -->
+              <div class="zone__pin zone__pin--ext" style="--x:53%;--y:11%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Fronton</span>
+              </div>
+              <div class="zone__pin zone__pin--ext" style="--x:12%;--y:50%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">L'Isle-J.</span>
+              </div>
+              <div class="zone__pin zone__pin--ext" style="--x:46%;--y:88%">
+                <div class="zone__pin-dot"></div>
+                <span class="zone__pin-name">Cazères</span>
               </div>
             </div>
           </div>
@@ -410,7 +420,12 @@
                   <span class="zone__zone-badge zone__zone-badge--ext">Sur devis</span>
                 </div>
                 <p class="zone__zone-range">25 — 40 km · Frais selon distance</p>
-                <p class="zone__zone-ext-desc">Des frais de déplacement peuvent s'appliquer. Contactez-nous pour un devis rapide et personnalisé.</p>
+                <div class="zone__chips zone__chips--ext">
+                  <span class="zone__chip zone__chip--ext">Fronton</span>
+                  <span class="zone__chip zone__chip--ext">L'Isle-Jourdain</span>
+                  <span class="zone__chip zone__chip--ext">Cazères</span>
+                </div>
+                <p class="zone__zone-ext-desc">Frais de déplacement selon distance. Contactez-nous pour un devis.</p>
               </div>
 
             </div>
@@ -759,6 +774,11 @@
       }, 14000);
     })();
   </script>
+
+  <div class="contact-toast" id="contactToast" aria-live="polite">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    Mail copié !
+  </div>
 
 </body>
 </html>
