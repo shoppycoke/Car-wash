@@ -99,8 +99,17 @@
 
 .service-card__price {
   display: flex;
-  align-items: baseline;
-  gap: var(--space-3);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.price-from {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
 }
 
 .price {
@@ -226,5 +235,40 @@
 
   .service-card__features li {
     font-size: var(--fs-xs);
+  }
+}
+
+/* ── Note supplément ── */
+.services__disclaimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: var(--space-8);
+  padding: var(--space-3) var(--space-6);
+  background: rgba(244, 244, 244, 0.03);
+  border: 1px solid rgba(244, 244, 244, 0.07);
+  border-radius: var(--radius-full);
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--lh-normal);
+}
+
+.services__disclaimer svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  opacity: 0.6;
+}
+
+@media (max-width: 480px) {
+  .services__disclaimer {
+    border-radius: var(--radius-md);
+    text-align: left;
+    align-items: flex-start;
   }
 }
