@@ -8,7 +8,6 @@ import { initFaq }         from './faq.js';
 import { initPageLoader }  from './page-loader.js';
 import { initScrollNav }    from './scroll-nav.js';
 import { initParallax }     from './parallax.js';
-import { initScrollNext }   from './scroll-next.js';
 import { initSmoothScroll } from './smooth-scroll.js';
 import { initReviews }     from './reviews.js';
 
@@ -23,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initFaq();
   initScrollNav();
   initParallax();
-  initScrollNext();
   initReviews();
 
   // Footer year

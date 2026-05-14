@@ -1,50 +1,128 @@
-/* ============================================================
-   SMOOTH SCROLL — Programmable uniquement (dots, clavier, flèche bas)
-   Le scroll manuel (molette, trackpad, tactile) est entièrement libre.
-   ============================================================ */
+/* ========== SMOOTH SCROLL — Lerp engine ========== */
 export function initSmoothScroll() {
-  /* Reduced motion : scroll natif immédiat */
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.__scrollToSection = (el) => el?.scrollIntoView({ block: 'start' });
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const touch   = window.matchMedia('(pointer: coarse)').matches;
+
+  /* Touch / accessibilité : scroll natif */
+  if (reduced || touch) {
+    window.__scrollToSection = (el) => el?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     return;
   }
 
-  /* Desktop (pointeur fin) : désactiver tout CSS snap résiduel */
-  if (window.matchMedia('(pointer: fine)').matches) {
-    document.documentElement.style.scrollSnapType = 'none';
+  /* On prend le contrôle total du scroll */
+  const html = document.documentElement;
+  html.style.scrollSnapType  = 'none';
+  html.style.scrollBehavior  = 'auto';
+
+  let cur    = window.scrollY;   /* position rendue           */
+  let tgt    = window.scrollY;   /* position cible            */
+  let raf    = null;
+  let isAnim = false;             /* true pendant goTo()       */
+
+  const LERP  = 0.10;   /* douceur : 0.07 = soyeux, 0.15 = vif */
+  const MMULT = 2.8;    /* amplification molette souris         */
+  const maxY  = () => html.scrollHeight - window.innerHeight;
+
+  /* ── Boucle lerp ── */
+  function loop() {
+    const d = tgt - cur;
+    if (Math.abs(d) < 0.3) { cur = tgt; window.scrollTo(0, cur); raf = null; return; }
+    cur += d * LERP;
+    window.scrollTo(0, cur);
+    raf = requestAnimationFrame(loop);
   }
 
-  let rafId = null;
+  /* ── Molette ── */
+  window.addEventListener('wheel', (e) => {
+    /* Laisse les enfants scrollables gérer leur propre scroll */
+    let node = e.target;
+    while (node && node !== html) {
+      const oy = getComputedStyle(node).overflowY;
+      if (/(auto|scroll)/.test(oy) && node.scrollHeight > node.clientHeight) return;
+      node = node.parentElement;
+    }
+    e.preventDefault();
 
-  /* easeOutExpo — décélération iOS-like (correspond à --ease-smooth) */
-  const ease = (t) => (t >= 1 ? 1 : 1 - Math.pow(2, -10 * t));
+    if (isAnim) {
+      /* Animation programmatique interrompue → reprise lerp */
+      cancelAnimationFrame(raf); raf = null; isAnim = false;
+      cur = window.scrollY; tgt = window.scrollY;
+    } else if (!raf) {
+      /* Était inactif → resync depuis la vraie position */
+      cur = window.scrollY; tgt = window.scrollY;
+    }
+    /* Lerp en cours → simple accumulation sur tgt */
 
-  function smoothScrollTo(targetY, duration) {
-    if (rafId) cancelAnimationFrame(rafId);
-    const startY = window.scrollY;
-    const delta  = targetY - startY;
-    if (Math.abs(delta) < 1) return;
-    const t0 = performance.now();
+    let d = e.deltaY;
+    if (e.deltaMode === 1) d *= 32;
+    if (e.deltaMode === 2) d *= window.innerHeight;
 
-    (function tick(now) {
-      const p = Math.min((now - t0) / duration, 1);
-      window.scrollTo(0, startY + delta * ease(p));
-      if (p < 1) rafId = requestAnimationFrame(tick);
-      else        rafId = null;
-    })(performance.now());
+    /* Souris : delta entier ≥ 50 → amplification */
+    if (Number.isInteger(d) && Math.abs(d) >= 50) d *= MMULT;
+
+    tgt = Math.max(0, Math.min(tgt + d, maxY()));
+    if (!raf) raf = requestAnimationFrame(loop);
+  }, { passive: false });
+
+  /* ── Clavier ── */
+  window.addEventListener('keydown', (e) => {
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+    if (e.target.isContentEditable) return;
+
+    let d = 0;
+    if (e.key === 'ArrowDown') d =  90;
+    if (e.key === 'ArrowUp')   d = -90;
+    if (e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) d =  window.innerHeight * 0.88;
+    if (e.key === 'PageUp'   || (e.key === ' ' &&  e.shiftKey)) d = -window.innerHeight * 0.88;
+    if (e.key === 'Home') {
+      e.preventDefault();
+      tgt = 0;
+      if (!raf) { cur = window.scrollY; raf = requestAnimationFrame(loop); }
+      return;
+    }
+    if (e.key === 'End') {
+      e.preventDefault();
+      tgt = maxY();
+      if (!raf) { cur = window.scrollY; raf = requestAnimationFrame(loop); }
+      return;
+    }
+    if (!d) return;
+    e.preventDefault();
+    if (!raf) { cur = window.scrollY; tgt = window.scrollY; }
+    tgt = Math.max(0, Math.min(tgt + d, maxY()));
+    if (!raf) raf = requestAnimationFrame(loop);
+  });
+
+  /* ── Navigation programmatique (dots, scroll-nav) ── */
+  function goTo(y, ms = 700) {
+    y = Math.max(0, Math.min(Math.round(y), maxY()));
+    if (raf) { cancelAnimationFrame(raf); raf = null; }
+    const from = cur;
+    const t0   = performance.now();
+    isAnim     = true;
+    const ease = (t) => 1 - Math.pow(1 - t, 4); /* easeOutQuart */
+    function step(now) {
+      const p = Math.min((now - t0) / ms, 1);
+      cur = from + (y - from) * ease(p);
+      tgt = cur;
+      window.scrollTo(0, cur);
+      if (p < 1) { raf = requestAnimationFrame(step); }
+      else        { raf = null; isAnim = false; }
+    }
+    raf = requestAnimationFrame(step);
   }
 
-  /* Annuler l'animation si l'utilisateur interagit manuellement */
-  const cancelOnInteract = () => {
-    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-  };
-  window.addEventListener('wheel',      cancelOnInteract, { passive: true });
-  window.addEventListener('touchstart', cancelOnInteract, { passive: true });
-
-  /* API publique — utilisée par scroll-nav.js, scroll-next.js, header.js */
   window.__scrollToSection = (el) => {
     if (!el) return;
-    const y = el.getBoundingClientRect().top + window.scrollY;
-    smoothScrollTo(y, 700);
+    goTo(el.getBoundingClientRect().top + window.scrollY);
   };
+
+  /* ── Resync sur resize / scroll externe ── */
+  window.addEventListener('scroll', () => {
+    if (!raf) { cur = window.scrollY; tgt = window.scrollY; }
+  }, { passive: true });
+
+  window.addEventListener('resize', () => {
+    cur = window.scrollY; tgt = window.scrollY;
+  }, { passive: true });
 }
