@@ -134,7 +134,7 @@
       <a href="#before-after">Avant / Après</a>
       <a href="#reviews">Avis</a>
       <a href="#faq">FAQ</a>
-      <a href="mailto:clairysauto@gmail.com?subject=Demande%20de%20contact%20%E2%80%94%20Clairys%20Auto">Nous contacter</a>
+      <a href="mailto:clairysauto@gmail.com?subject=Demande%20de%20contact%20%E2%80%94%20Clairys%20Auto" class="contact-link">Nous contacter</a>
       <a href="#booking" class="btn btn--accent">Réserver maintenant</a>
     </div>
   </header>
@@ -775,9 +775,14 @@
     })();
   </script>
 
-  <div class="contact-toast" id="contactToast" aria-live="polite">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-    Mail copié !
+  <div class="contact-toast" id="contactToast" role="status" aria-live="polite">
+    <div class="contact-toast__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <div class="contact-toast__body">
+      <span class="contact-toast__label">Mail copié !</span>
+      <span class="contact-toast__email">clairysauto@gmail.com</span>
+    </div>
   </div>
 
 </body>

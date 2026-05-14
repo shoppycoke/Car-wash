@@ -128,41 +128,75 @@
   opacity: 0;
 }
 
-/* ── Toast "Email copié !" — fixed, visible depuis toute la page ── */
+/* ── Toast "Mail copié !" ── */
 .contact-toast {
   position: fixed;
-  bottom: 100px;
+  bottom: 36px;
   left: 50%;
-  transform: translateX(-50%) translateY(12px);
+  transform: translateX(-50%) translateY(16px);
   display: flex;
   align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-2) var(--space-4);
-  background: var(--bg-elev-2);
-  border: 1px solid rgba(91, 192, 190, 0.35);
-  border-radius: var(--radius-full);
-  font-size: var(--fs-xs);
-  font-weight: var(--fw-semibold);
-  color: var(--accent);
-  white-space: nowrap;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 16px rgba(91, 192, 190, 0.12);
+  gap: 14px;
+  padding: 14px 20px;
+  background: rgba(18, 27, 56, 0.96);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(91, 192, 190, 0.28);
+  border-radius: 18px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55), 0 0 24px rgba(91, 192, 190, 0.08);
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.28s var(--ease-smooth), transform 0.28s var(--ease-smooth);
+  transition: opacity 0.32s var(--ease-smooth), transform 0.42s var(--ease-bounce);
   z-index: 99998;
+  white-space: nowrap;
 }
 
 @media (max-width: 900px) {
   .contact-toast {
-    bottom: calc(76px + env(safe-area-inset-bottom, 0px) + 12px);
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px) + 12px);
+    padding: 12px 18px;
+    gap: 12px;
+    border-radius: 16px;
   }
 }
 
-.contact-toast svg {
-  width: 13px;
-  height: 13px;
+.contact-toast__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(91, 192, 190, 0.14);
+  border: 1px solid rgba(91, 192, 190, 0.32);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-toast__icon svg {
+  width: 15px;
+  height: 15px;
   stroke: var(--accent);
   flex-shrink: 0;
+}
+
+.contact-toast__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contact-toast__label {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  line-height: 1;
+}
+
+.contact-toast__email {
+  font-size: 0.68rem;
+  color: var(--accent);
+  opacity: 0.75;
+  line-height: 1;
 }
 
 .contact-toast.is-visible {
