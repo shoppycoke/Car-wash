@@ -20,7 +20,7 @@
       rgba(11, 19, 43, 0.72) 50%,
       rgba(11, 19, 43, 0.92) 100%
     ),
-    url('../../assets/images/hero-bg.jpg') center / cover no-repeat;
+    url('../../assets/images/hero-bg.webp') center / cover no-repeat;
 }
 
 .hero__glow {

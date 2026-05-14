@@ -3,7 +3,15 @@
     "allow": [
       "PowerShell(Get-Item *)",
       "PowerShell(Start-Process \"E:\\\\sitedtl\\\\index.html\")",
-      "PowerShell(New-Item *)"
+      "PowerShell(New-Item *)",
+      "PowerShell($files = @\\('about.css', 'gallery.css', 'whatsapp.css', 'typography.css'\\); $imported = @\\('variables.css', 'reset.css', 'components.css', 'animations.css', 'header.css', 'footer.css', 'hero.css', 'services.css', 'before-after.css', 'review.css', 'faq.css', 'zone.css', 'booking.css', 'mobile-bar.css'\\); $orphan = @\\(\\); foreach \\($f in $files\\) { if \\($imported -notcontains $f\\) { $orphan += $f } }; \"FICHIERS ORPHELINS CSS:\"; $orphan)",
+      "PowerShell($jsFiles = @\\('tilt.js', 'calendly.js', 'before-after.js', 'page-loader.js', 'parallax.js', 'scroll-nav.js', 'scroll-next.js', 'animations.js', 'faq.js', 'reviews.js', 'smooth-scroll.js', 'header.js', 'anti-inspect.js'\\); $imported = @\\('animations.js', 'header.js', 'tilt.js', 'before-after.js', 'calendly.js', 'faq.js', 'page-loader.js', 'scroll-nav.js', 'parallax.js', 'smooth-scroll.js', 'reviews.js', 'anti-inspect.js'\\); $orphan = @\\(\\); foreach \\($f in $jsFiles\\) { if \\($imported -notcontains $f\\) { $orphan += $f } }; \"FICHIERS JS ORPHELINS:\"; $orphan)",
+      "PowerShell(\\(Get-ChildItem -Path \"E:\\\\sitedtl\\\\assets\\\\images\" -Recurse -File | Select-Object Extension | Sort-Object -Unique | Group-Object Extension\\) | ForEach-Object { \"$\\($_.Name\\): $\\($_.Count\\) fichier\\(s\\)\" })",
+      "PowerShell(ls -Recurse \"E:\\\\sitedtl\\\\assets\\\\images\" | Select-Object Name, @{Name=\"Ext\";Expression={$_.Extension}})",
+      "PowerShell(Get-ChildItem \"E:\\\\sitedtl\\\\assets\\\\images\" -Recurse -File | Select-Object Name, @{N='Ko';E={[math]::Round\\($_.Length/1KB\\)}} | Sort-Object Ko -Descending)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(Get-ChildItem \"E:\\\\sitedtl\\\\assets\\\\images\" -Recurse -File | Select-Object Name, @{N='Ko';E={[math]::Round\\($_.Length/1KB\\)}} | Sort-Object Ko -Descending | Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem \"E:\\\\sitedtl\\\\assets\\\\images\" -Recurse -File | Select-Object Name, DirectoryName, @{N='Ko';E={[math]::Round\\($_.Length/1KB\\)}} | Format-Table -AutoSize)"
     ]
   }
 }
