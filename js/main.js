@@ -10,6 +10,7 @@ import { initScrollNav }    from './scroll-nav.js';
 import { initParallax }     from './parallax.js';
 import { initScrollNext }   from './scroll-next.js';
 import { initSmoothScroll } from './smooth-scroll.js';
+import { initReviews }     from './reviews.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initPageLoader();
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollNav();
   initParallax();
   initScrollNext();
+  initReviews();
 
   // Footer year
   const yearEl = document.getElementById('year');

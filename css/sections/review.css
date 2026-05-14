@@ -90,6 +90,32 @@
   margin-bottom: var(--space-8);
 }
 
+.reviews__empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-16) var(--space-8);
+  background: var(--gradient-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.reviews__empty svg {
+  width: 48px;
+  height: 48px;
+  stroke: var(--accent);
+  opacity: 0.5;
+}
+
+.reviews__empty p {
+  font-size: var(--fs-base);
+  color: var(--text-muted);
+  line-height: var(--lh-normal);
+}
+
 .review-card {
   padding: var(--space-6);
   background: var(--gradient-glass);
