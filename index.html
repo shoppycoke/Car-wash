@@ -140,7 +140,6 @@
     <button class="scroll-nav__dot"           data-target="services"     title="Prestations"></button>
     <button class="scroll-nav__dot"           data-target="zone"         title="Zone"></button>
     <button class="scroll-nav__dot"           data-target="before-after" title="Avant / Après"></button>
-    <button class="scroll-nav__dot"           data-target="gallery"      title="Réalisations"></button>
     <button class="scroll-nav__dot"           data-target="booking"      title="Réserver"></button>
     <button class="scroll-nav__dot"           data-target="reviews"      title="Avis"></button>
     <button class="scroll-nav__dot"           data-target="faq"          title="FAQ"></button>
@@ -431,60 +430,7 @@
       </div>
     </section>
 
-    <!-- ============ GALLERY ============ -->
-    <section class="gallery" id="gallery">
-      <div class="container">
-        <div class="section-head animate-on-scroll anim-blur">
-          <span class="section-eyebrow">Nos réalisations</span>
-          <h2 class="section-title">Le résultat en <span class="text-accent">images</span></h2>
-        </div>
 
-        <div class="gallery__grid">
-          <div class="gallery__card animate-on-scroll">
-            <img src="assets/images/before-after/after-1.jpg" alt="Sièges tissu après detailing" loading="lazy" width="400" height="300" />
-            <span class="gallery__label gallery__label--accent">Sièges tissu</span>
-          </div>
-
-          <div class="gallery__card animate-on-scroll">
-            <img src="assets/images/before-after/before-1.jpg" alt="État avant detailing" loading="lazy" width="400" height="300" />
-            <span class="gallery__label">Avant intervention</span>
-          </div>
-
-          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
-            <div class="gallery__placeholder-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
-            </div>
-            <span class="gallery__placeholder-label">Tapis &amp; Moquettes</span>
-            <span class="gallery__placeholder-sub">Photo à venir</span>
-          </div>
-
-          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
-            <div class="gallery__placeholder-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
-            </div>
-            <span class="gallery__placeholder-label">Tableau de bord</span>
-            <span class="gallery__placeholder-sub">Photo à venir</span>
-          </div>
-
-          <div class="gallery__card gallery__card--placeholder animate-on-scroll">
-            <div class="gallery__placeholder-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><circle cx="12" cy="13" r="3"/></svg>
-            </div>
-            <span class="gallery__placeholder-label">Cuirs &amp; Plastiques</span>
-            <span class="gallery__placeholder-sub">Photo à venir</span>
-          </div>
-
-          <!-- REMPLACER : URL Instagram -->
-          <a href="#" target="_blank" rel="noopener" class="gallery__card gallery__card--insta animate-on-scroll" aria-label="Voir notre portfolio sur Instagram">
-            <div class="gallery__insta-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
-            </div>
-            <span class="gallery__insta-text">Voir toutes<br>nos réalisations</span>
-            <span class="gallery__insta-sub">@nom_instagram</span>
-          </a>
-        </div>
-      </div>
-    </section>
 
     <!-- ============ BOOKING ============ -->
     <section class="booking" id="booking">
@@ -651,99 +597,78 @@
         <div class="faq__list animate-on-scroll">
 
           <div class="faq__item">
-            <button class="faq__question" type="button">
-              Venez-vous directement à mon domicile ?
-              <span class="faq__icon" aria-hidden="true"></span>
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span class="faq__num" aria-hidden="true">01</span>
+              <span class="faq__question-text">Venez-vous directement à mon domicile ?</span>
+              <span class="faq__chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
             </button>
-            <div class="faq__answer">
+            <div class="faq__answer" role="region">
               <div class="faq__answer-inner">
-                Oui, nous nous déplaçons directement à votre adresse — domicile, lieu de travail ou parking — en région toulousaine. Vous n'avez rien à prévoir si ce n'est nous indiquer où votre véhicule est garé.
+                <p>Oui, nous nous déplaçons directement à votre domicile, sur votre lieu de travail ou sur parking dans toute la région toulousaine.</p>
+                <p>Nous avons simplement besoin d'une prise de courant ainsi que d'un accès à l'eau.</p>
               </div>
             </div>
           </div>
 
           <div class="faq__item">
-            <button class="faq__question" type="button">
-              Avez-vous besoin d'eau ou d'électricité ?
-              <span class="faq__icon" aria-hidden="true"></span>
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span class="faq__num" aria-hidden="true">02</span>
+              <span class="faq__question-text">Combien de temps dure la prestation ?</span>
+              <span class="faq__chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
             </button>
-            <div class="faq__answer">
+            <div class="faq__answer" role="region">
               <div class="faq__answer-inner">
-                Non, nous sommes 100% autonomes. Notre équipement embarque tout le nécessaire — eau, aspirateur, machines. Aucun branchement requis de votre côté.
+                <p>Tout dépend de l'état du véhicule et de la formule choisie.</p>
+                <p>Une estimation précise vous sera donnée une fois sur place après inspection du véhicule.</p>
               </div>
             </div>
           </div>
 
           <div class="faq__item">
-            <button class="faq__question" type="button">
-              Combien de temps dure la prestation ?
-              <span class="faq__icon" aria-hidden="true"></span>
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span class="faq__num" aria-hidden="true">03</span>
+              <span class="faq__question-text">Quelle est la différence entre les trois formules ?</span>
+              <span class="faq__chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
             </button>
-            <div class="faq__answer">
+            <div class="faq__answer" role="region">
               <div class="faq__answer-inner">
-                Selon la formule choisie : <strong>Essentiel ~1h</strong>, <strong>Premium ~2h</strong>, <strong>Complet ~3h30</strong>. Ces durées peuvent varier selon l'état général de votre véhicule. Nous vous prévenons toujours si une prolongation est nécessaire.
+                <p>Chaque formule est un palier de service supérieur :</p>
+                <div class="faq__tiers">
+                  <div class="faq__tier">
+                    <span class="faq__tier-name">Essentiel</span>
+                    <p>Aspiration complète, dépoussiérage intérieur et nettoyage des vitres. Idéal pour un entretien régulier.</p>
+                  </div>
+                  <div class="faq__tier">
+                    <span class="faq__tier-name faq__tier-name--premium">Premium</span>
+                    <p>Comprend la formule Essentiel + shampoing des sièges et textiles, rénovation des plastiques et soin du cuir.</p>
+                  </div>
+                  <div class="faq__tier">
+                    <span class="faq__tier-name faq__tier-name--complet">Complet</span>
+                    <p>Comprend la formule Premium + décontamination textile en profondeur, traitement anti-bactérien à l'ozone et protection longue durée.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="faq__item">
-            <button class="faq__question" type="button">
-              Quels produits utilisez-vous ?
-              <span class="faq__icon" aria-hidden="true"></span>
+            <button class="faq__question" type="button" aria-expanded="false">
+              <span class="faq__num" aria-hidden="true">04</span>
+              <span class="faq__question-text">Proposez-vous des prestations pour les professionnels ?</span>
+              <span class="faq__chevron" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </span>
             </button>
-            <div class="faq__answer">
+            <div class="faq__answer" role="region">
               <div class="faq__answer-inner">
-                Nous utilisons exclusivement des produits professionnels certifiés, respectueux des matériaux (cuir, alcantara, plastique, tissu) et de l'environnement. Pas de produits abrasifs ni chimiques agressifs — uniquement des références utilisées en compétition automobile.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button">
-              Quelle est la différence entre les trois formules ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                <strong>Essentiel</strong> couvre l'aspiration, le dépoussiérage et les vitres — idéal pour un entretien régulier.
-                <strong>Premium</strong> y ajoute le shampoing des sièges, la rénovation des plastiques et un traitement cuir nourrissant.
-                <strong>Complet</strong> inclut tout le Premium ainsi qu'une décontamination textile profonde, un traitement anti-bactérien à l'ozone et une protection longue durée.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button">
-              Comment puis-je payer ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                Le paiement s'effectue sur place, à la fin de la prestation, une fois que vous êtes satisfait du résultat. Nous acceptons les espèces, la carte bancaire et le virement.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button">
-              Que se passe-t-il si je dois annuler ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                L'annulation est <strong>totalement gratuite jusqu'à 24h avant</strong> le rendez-vous. En dessous de ce délai, 30% du montant de la prestation pourra être retenu pour couvrir le déplacement.
-              </div>
-            </div>
-          </div>
-
-          <div class="faq__item">
-            <button class="faq__question" type="button">
-              Intervenez-vous sur les véhicules de société ou les flottes ?
-              <span class="faq__icon" aria-hidden="true"></span>
-            </button>
-            <div class="faq__answer">
-              <div class="faq__answer-inner">
-                Oui, nous proposons des tarifs adaptés pour les flottes d'entreprise, avec facturation et intervention sur site. <a href="#booking">Contactez-nous</a> pour un devis personnalisé.
+                <p>Oui, nous proposons des prestations adaptées aux entreprises et aux flottes de véhicules, avec intervention sur site et facturation professionnelle.</p>
+                <p><a href="#booking">Contactez-nous</a> pour un devis personnalisé.</p>
               </div>
             </div>
           </div>

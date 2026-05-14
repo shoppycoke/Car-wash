@@ -8,6 +8,9 @@ export function initFaq() {
     const answer = item.querySelector('.faq__answer');
     if (!btn || !answer) return;
 
+    btn.setAttribute('aria-expanded', 'false');
+    answer.style.maxHeight = '0';
+
     btn.addEventListener('click', () => {
       const isOpen = item.classList.contains('is-open');
 
@@ -15,8 +18,8 @@ export function initFaq() {
       items.forEach((i) => {
         i.classList.remove('is-open');
         const a = i.querySelector('.faq__answer');
-        if (a) a.style.maxHeight = '0';
         const q = i.querySelector('.faq__question');
+        if (a) a.style.maxHeight = '0';
         if (q) q.setAttribute('aria-expanded', 'false');
       });
 
@@ -27,8 +30,5 @@ export function initFaq() {
         btn.setAttribute('aria-expanded', 'true');
       }
     });
-
-    btn.setAttribute('aria-expanded', 'false');
-    answer.style.maxHeight = '0';
   });
 }

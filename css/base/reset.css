@@ -152,7 +152,6 @@ footer {
 
 /* Alternating section backgrounds */
 .services,
-.gallery,
 .faq {
   background: var(--bg-elev-1);
 }
