@@ -128,12 +128,12 @@
   opacity: 0;
 }
 
-/* ── Toast "Email copié !" ── */
+/* ── Toast "Email copié !" — fixed, visible depuis toute la page ── */
 .contact-toast {
-  position: absolute;
-  top: calc(100% + 10px);
+  position: fixed;
+  bottom: 100px;
   left: 50%;
-  transform: translateX(-50%) translateY(-6px);
+  transform: translateX(-50%) translateY(12px);
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -149,7 +149,13 @@
   pointer-events: none;
   opacity: 0;
   transition: opacity 0.28s var(--ease-smooth), transform 0.28s var(--ease-smooth);
-  z-index: 200;
+  z-index: 99998;
+}
+
+@media (max-width: 900px) {
+  .contact-toast {
+    bottom: calc(76px + env(safe-area-inset-bottom, 0px) + 12px);
+  }
 }
 
 .contact-toast svg {

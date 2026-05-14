@@ -37,16 +37,20 @@ export function initHeader() {
     });
   }
 
-  // Contact button — copy email + toast fallback
-  const contactBtn   = document.getElementById('contactBtn');
+  // Liens de contact — mailto: + copie clipboard si aucun client mail
   const contactToast = document.getElementById('contactToast');
-  if (contactBtn && contactToast) {
+  if (contactToast) {
     let toastTimer = null;
-    contactBtn.addEventListener('click', () => {
-      navigator.clipboard?.writeText('clairysauto@gmail.com').catch(() => {});
+    const showToast = () => {
       contactToast.classList.add('is-visible');
       clearTimeout(toastTimer);
       toastTimer = setTimeout(() => contactToast.classList.remove('is-visible'), 2800);
+    };
+    document.querySelectorAll('.contact-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navigator.clipboard?.writeText('clairysauto@gmail.com').catch(() => {});
+        showToast();
+      });
     });
   }
 
